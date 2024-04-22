@@ -13,6 +13,7 @@ const SignUp = () => {
     const password = form.password.value;
     console.log("input field", name, email, password);
   };
+
   return (
     <div
       className="hero min-h-fit lg:min-h-screen bg-indigo-800 bg-fixed  bg-opacity-30"
@@ -32,6 +33,18 @@ const SignUp = () => {
         <div className="flex flex-col gap-6 mt-6 ">
           <div className="flex flex-col w-full">
             <label className="text-sky-500 font-medium text-xl">Name</label>
+            <input
+              className="p-2 rounded-lg"
+              type="text"
+              name="name"
+              id=""
+              placeholder="Enter your name"
+            />
+          </div>
+          <div className="flex flex-col w-full">
+            <label className="text-sky-500 font-medium text-xl">
+              Acount type
+            </label>
             <input
               className="p-2 rounded-lg"
               type="text"

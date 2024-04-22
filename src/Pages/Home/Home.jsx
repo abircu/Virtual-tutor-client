@@ -5,8 +5,6 @@ import PopularMenu from "./PopularMenu";
 import Featured from "./Featured";
 import Testimonial from "./Testimonial";
 import Halmet from "../../Components/Halmet";
-import Covered from "../../Shared/Covered";
-import heroImg from "../../assets/home/home-hero.jpg";
 
 const Home = () => {
   return (
