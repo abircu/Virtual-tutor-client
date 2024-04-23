@@ -3,15 +3,32 @@ import { NavLink } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
+import axios from "axios";
 
 const SignUp = () => {
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log("input field", name, email, password);
+    const selectedOption = form.countries.value;
+    console.log(name, email, password, selectedOption);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/account/signup",
+        {
+          name: name,
+          email: email,
+          password: password,
+          role: selectedOption,
+        }
+      );
+      console.log("registration succesfulll", response.data);
+    } catch (error) {
+      console.log("registration failed", error.response.data);
+    }
   };
 
   return (
@@ -42,16 +59,15 @@ const SignUp = () => {
             />
           </div>
           <div className="flex flex-col w-full">
-            <label className="text-sky-500 font-medium text-xl">
-              Acount type
+            <label for="countries" className="text-sky-500 font-medium text-xl">
+              Select an option
             </label>
-            <input
-              className="p-2 rounded-lg"
-              type="text"
-              name="name"
-              id=""
-              placeholder="Enter your name"
-            />
+            <select id="countries" className="bg-gray-50 p-2 rounded-lg">
+              <option selected>Choose a country</option>
+              <option value="Student">Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Admin">Admin</option>
+            </select>
           </div>
           <div className="flex flex-col">
             <label className="text-sky-500 font-medium text-xl" htmlFor="">
