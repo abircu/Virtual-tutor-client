@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import axios from "axios";
+import { baseUrl } from "../../config/config";
 
 const SignUp = () => {
   const handleRegister = async (e) => {
@@ -16,15 +17,12 @@ const SignUp = () => {
     console.log(name, email, password, selectedOption);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/account/signup",
-        {
-          name: name,
-          email: email,
-          password: password,
-          role: selectedOption,
-        }
-      );
+      const response = await axios.post(`${baseUrl}signup`, {
+        name: name,
+        email: email,
+        password: password,
+        role: selectedOption,
+      });
       console.log("registration succesfulll", response.data);
     } catch (error) {
       console.log("registration failed", error.response.data);
