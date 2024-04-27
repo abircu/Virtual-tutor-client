@@ -9,7 +9,7 @@ const Hero_top = () => {
             What we offer.
           </h1>
         </div>
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-2">
           <div className=" flex gap-3  items-center justify-center bg-purple-400 text-2xl p-3 py-6 rounded-lg text-white font-bold">
             <p>Lorem, ipsum dolor.</p>
             <FaArrowRight className="hover:text-purple-800"></FaArrowRight>

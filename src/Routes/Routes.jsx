@@ -6,6 +6,8 @@ import Academic from "../Pages/Academic/Academic";
 import Skill from "../Pages/Skills/Skill";
 import SignIn from "../Pages/Login/SignIn";
 import SignUp from "../Pages/Registation/SignUp";
+import PrivetRoutes from "./PrivetRoutes";
+import Secret from "../Shared/Secret/Secret";
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/secret",
+        element: (
+          <PrivetRoutes>
+            <Secret></Secret>
+          </PrivetRoutes>
+        ),
       },
     ],
   },
