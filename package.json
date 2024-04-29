@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@smastrom/react-rating": "^1.5.0",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "firebase": "^10.11.0",
     "localforage": "^1.10.0",
@@ -24,6 +25,8 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.22.3",
     "react-simple-captcha": "^9.3.1",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8",
     "sweetalert2": "^11.10.8",

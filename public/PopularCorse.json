@@ -1,0 +1,147 @@
+[
+    {
+      "course_id": "123456",
+      "name": "Data Science: From Beginner to Advanced",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Data-analysis_hzvxeg.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-05-15",
+      "selling": true,
+      "rating": 4.7,
+      "description": "This comprehensive course covers everything from data wrangling to machine learning algorithms.",
+      "instructor": {
+        "name": "Dr. Jane Doe",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "8 weeks",
+      "price": 99.99,
+      "enrollment_count": 5000,
+      "syllabus": [
+        "Introduction to Data Science",
+        "Data Wrangling and Cleaning",
+        "Statistical Analysis",
+        "Machine Learning Basics",
+        "Advanced Topics in Deep Learning"
+      ]
+    },
+    {
+      "course_id": "789012",
+      "name": "Web Development Bootcamp",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-03-10",
+      "selling": true,
+      "rating": 4.5,
+      "description": "Learn modern web development technologies and build real-world projects.",
+      "instructor": {
+        "name": "John Smith",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "12 weeks",
+      "price": 149.99,
+      "enrollment_count": 8000,
+      "syllabus": [
+        "HTML & CSS Fundamentals",
+        "JavaScript Basics",
+        "Backend Development with Node.js",
+        "Database Management",
+        "Project Deployment"
+      ]
+    },
+    {
+      "course_id": "345678",
+      "name": "Digital Marketing Masterclass",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Digital-marketing_o7admf.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-04-20",
+      "selling": true,
+      "rating": 4.8,
+      "description": "Gain expertise in online marketing strategies and analytics.",
+      "instructor": {
+        "name": "Emily Brown",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "6 weeks",
+      "price": 79.99,
+      "enrollment_count": 6000,
+      "syllabus": [
+        "Introduction to Digital Marketing",
+        "SEO and SEM Techniques",
+        "Social Media Marketing",
+        "Content Strategy",
+        "Marketing Analytics"
+      ]
+    },
+    {
+      "course_id": "567890",
+      "name": "Artificial Intelligence Essentials",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Ai_a88eam.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-06-01",
+      "selling": true,
+      "rating": 4.9,
+      "description": "Explore the fundamentals of artificial intelligence and its applications.",
+      "instructor": {
+        "name": "Dr. Mark Johnson",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "10 weeks",
+      "price": 129.99,
+      "enrollment_count": 4000,
+      "syllabus": [
+        "Introduction to AI",
+        "Machine Learning Algorithms",
+        "Natural Language Processing",
+        "Computer Vision",
+        "Ethical Considerations in AI"
+      ]
+    },
+    {
+      "course_id": "901234",
+      "name": "Photography Basics: Capturing Moments",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Photgraphy_yfxvlh.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-02-05",
+      "selling": true,
+      "rating": 4.6,
+      "description": "Learn photography techniques and enhance your visual storytelling skills.",
+      "instructor": {
+        "name": "Sarah Adams",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "4 weeks",
+      "price": 49.99,
+      "enrollment_count": 3000,
+      "syllabus": [
+        "Camera Fundamentals",
+        "Composition and Lighting",
+        "Editing and Post-Processing",
+        "Portrait and Landscape Photography",
+        "Creative Photography Projects"
+      ]
+    },
+    {
+      "course_id": "345678",
+      "name": "Introduction to Finance",
+      "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Finance_gqf02s.jpg",
+      "course_type": "Online",
+      "publishing_date": "2023-07-10",
+      "selling": true,
+      "rating": 4.4,
+      "description": "Learn key financial concepts and principles for personal and professional applications.",
+      "instructor": {
+        "name": "David Lee",
+        "profile": "https://example.com/instructor_profile"
+      },
+      "duration": "6 weeks",
+      "price": 69.99,
+      "enrollment_count": 7000,
+      "syllabus": [
+        "Financial Statements Analysis",
+        "Investment Strategies",
+        "Risk Management",
+        "Corporate Finance",
+        "Personal Finance Planning"
+      ]
+    }
+  ]
+  
