@@ -8,6 +8,8 @@ import SignIn from "../Pages/Login/SignIn";
 import SignUp from "../Pages/Registation/SignUp";
 import PrivetRoutes from "./PrivetRoutes";
 import Secret from "../Shared/Secret/Secret";
+import PopularCard from "../Components/Home/PopularCard";
+import PcourseDetails from "../Components/Home/PcourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/popularcard",
+        element: <PopularCard></PopularCard>,
+      },
+      {
+        path: "/course/:courseId",
+        element: <PcourseDetails></PcourseDetails>,
       },
       {
         path: "/secret",

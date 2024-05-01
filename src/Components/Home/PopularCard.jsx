@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 const PopularCard = () => {
   useEffect(() => {
     Aos.init();
   }, []);
-  const [course, setCourse] = useState([]);
+  const [courses, setCourse] = useState([]);
   useEffect(() => {
     fetch("./PopularCorse.json")
       .then((res) => res.json())
@@ -14,7 +15,7 @@ const PopularCard = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto py-20">
       <div className="text-center justify-center items-center">
         <p className=" font-bold text-orange-600">Only the best</p>
         <h1 className=" text-sky-900 text-4xl font-bold">
@@ -29,31 +30,33 @@ const PopularCard = () => {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-10 pb-10 ">
-        {course.map((course) => (
+        {courses.map((course) => (
           <div
             key={course.course_id}
-            className="p-4 flex flex-col items-center justify-center"
+            className="p-4 flex flex-col items-center justify-center hover:bg-slate-200 rounded-lg hover:shadow-lg hover:shadow-indigo-400"
           >
-            <div>
-              <div
-                data-aos="flip-left"
-                data-aos-easing="ease-out-cubic"
-                data-aos-duration="2000"
-                className="w-64  h-36 border border-gray-200 rounded-lg overflow-hidden"
-              >
-                <img src={course.image} className="w-full h-auto" />
+            <Link to={`/course/${course.course_id}`} state={{ course: course }}>
+              <div>
+                <div
+                  data-aos="flip-left"
+                  data-aos-easing="ease-out-cubic"
+                  data-aos-duration="2000"
+                  className="w-64  h-36 border border-gray-200 rounded-lg overflow-hidden"
+                >
+                  <img src={course.image} className="w-full h-auto" />
+                </div>
               </div>
-            </div>
-            <div
-              data-aos="fade-right"
-              data-aos-offset="300"
-              data-aos-easing="ease-in-sine"
-              className="p-4 w-64"
-            >
-              <p className="text-xl font-semibold text-sky-800">
-                {course.name}
-              </p>
-            </div>
+              <div
+                // data-aos="fade-right"
+                // data-aos-offset="300"
+                // data-aos-easing="ease-in-sine"
+                className="p-4 w-64"
+              >
+                <p className="text-xl font-semibold text-sky-800">
+                  {course.name}
+                </p>
+              </div>
+            </Link>
           </div>
         ))}
       </div>

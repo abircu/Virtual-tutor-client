@@ -10,7 +10,7 @@
       "description": "This comprehensive course covers everything from data wrangling to machine learning algorithms.",
       "instructor": {
         "name": "Dr. Jane Doe",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "8 weeks",
       "price": 99.99,
@@ -34,7 +34,7 @@
       "description": "Learn modern web development technologies and build real-world projects.",
       "instructor": {
         "name": "John Smith",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "12 weeks",
       "price": 149.99,
@@ -58,7 +58,7 @@
       "description": "Gain expertise in online marketing strategies and analytics.",
       "instructor": {
         "name": "Emily Brown",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "6 weeks",
       "price": 79.99,
@@ -82,7 +82,7 @@
       "description": "Explore the fundamentals of artificial intelligence and its applications.",
       "instructor": {
         "name": "Dr. Mark Johnson",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "10 weeks",
       "price": 129.99,
@@ -106,7 +106,7 @@
       "description": "Learn photography techniques and enhance your visual storytelling skills.",
       "instructor": {
         "name": "Sarah Adams",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "4 weeks",
       "price": 49.99,
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "course_id": "345678",
+      "course_id": "345679",
       "name": "Introduction to Finance",
       "image": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Finance_gqf02s.jpg",
       "course_type": "Online",
@@ -130,7 +130,7 @@
       "description": "Learn key financial concepts and principles for personal and professional applications.",
       "instructor": {
         "name": "David Lee",
-        "profile": "https://example.com/instructor_profile"
+        "profile": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714507867/Virtual-tutor/review_wnrtr1.jpg"
       },
       "duration": "6 weeks",
       "price": 69.99,
