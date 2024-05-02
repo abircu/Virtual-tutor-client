@@ -6,6 +6,7 @@ import PopularCard from "../../Components/Home/PopularCard";
 import AboutUs from "../../Components/Home/AboutUs";
 import VartualTutorInfo from "../../Components/Home/VartualTutorInfo";
 import Testimonials from "../../Components/Home/Testimonials";
+import Faq from "../../Components/Home/Faq";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
       <PopularCard></PopularCard>
       <AboutUs></AboutUs>
       <VartualTutorInfo></VartualTutorInfo>
+      <Faq></Faq>
       <Testimonials></Testimonials>
     </div>
   );

@@ -10,6 +10,7 @@ import PrivetRoutes from "./PrivetRoutes";
 import Secret from "../Shared/Secret/Secret";
 import PopularCard from "../Components/Home/PopularCard";
 import PcourseDetails from "../Components/Home/PcourseDetails";
+import Videos from "../Components/Videos";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "/course/:courseId",
         element: <PcourseDetails></PcourseDetails>,
+      },
+      {
+        path: "/videos",
+        element: <Videos></Videos>,
       },
       {
         path: "/secret",

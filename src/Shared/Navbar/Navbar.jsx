@@ -29,6 +29,12 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
+        <Link to="/videos">
+          {" "}
+          <a>Videos</a>
+        </Link>
+      </li>
+      <li>
         <Link to="/secret">
           {" "}
           <a>Secret</a>
