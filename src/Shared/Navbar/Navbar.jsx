@@ -40,6 +40,12 @@ const Navbar = () => {
           <a>Secret</a>
         </Link>
       </li>
+      <li>
+        <Link to="/contact">
+          {" "}
+          <a>Contact</a>
+        </Link>
+      </li>
 
       <li>
         <Link to="/register">

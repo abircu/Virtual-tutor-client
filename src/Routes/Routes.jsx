@@ -11,6 +11,7 @@ import Secret from "../Shared/Secret/Secret";
 import PopularCard from "../Components/Home/PopularCard";
 import PcourseDetails from "../Components/Home/PcourseDetails";
 import Videos from "../Components/Videos";
+import Contact from "../Pages/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "/videos",
         element: <Videos></Videos>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
       {
         path: "/secret",
