@@ -34,12 +34,7 @@ const Navbar = () => {
           <a>Videos</a>
         </Link>
       </li>
-      <li>
-        <Link to="/secret">
-          {" "}
-          <a>Secret</a>
-        </Link>
-      </li>
+
       <li>
         <Link to="/contact">
           {" "}
@@ -47,14 +42,20 @@ const Navbar = () => {
         </Link>
       </li>
 
-      <li>
+      {/* <li>
         <Link to="/register">
           {" "}
           <a>SignUp</a>
         </Link>
-      </li>
+      </li> */}
       {user ? (
         <>
+          <li>
+            <Link to="/secret">
+              {" "}
+              <a>Secret</a>
+            </Link>
+          </li>
           <button
             onClick={handleLogOut}
             className="btn btn-ghost justify-center items-center text-xl font-bold"
