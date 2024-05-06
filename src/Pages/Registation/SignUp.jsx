@@ -23,17 +23,17 @@ const SignUp = () => {
       console.log("logged user", loggedUser);
     });
 
-    // try {
-    //   const response = await axios.post(`${baseUrl}signup`, {
-    //     name: name,
-    //     email: email,
-    //     password: password,
-    //     role: selectedOption,
-    //   });
-    //   console.log("registration succesfulll", response.data);
-    // } catch (error) {
-    //   console.log("registration failed", error.response.data);
-    // }
+    try {
+      const response = await axios.post(`${baseUrl}signup`, {
+        name: name,
+        email: email,
+        password: password,
+        role: selectedOption,
+      });
+      console.log("registration succesfulll", response.data);
+    } catch (error) {
+      console.log("registration failed", error.response.data);
+    }
     form.reset();
   };
 
