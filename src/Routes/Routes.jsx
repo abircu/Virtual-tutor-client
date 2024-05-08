@@ -12,6 +12,8 @@ import PopularCard from "../Components/Home/PopularCard";
 import PcourseDetails from "../Components/Home/PcourseDetails";
 import Videos from "../Components/Videos";
 import Contact from "../Pages/Contact/Contact";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../Pages/Deshboard/Cart/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,16 @@ export const router = createBrowserRouter([
             <Secret></Secret>
           </PrivetRoutes>
         ),
+      },
+    ],
+  },
+  {
+    path: "/deshboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "cart",
+        element: <Cart></Cart>,
       },
     ],
   },
