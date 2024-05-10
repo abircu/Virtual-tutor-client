@@ -19,7 +19,7 @@ const AboutUs = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias sequi
           officiis at. Perferendis eveniet quia ipsum nam distinctio,
           praesentium inventore blanditiis, ipsa fuga nostrum velit fugit
-          consequatur. Non, quaerat perferendis.
+          consequatur. Non, quaerat perferendis. Lorem, ipsum dolor.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
