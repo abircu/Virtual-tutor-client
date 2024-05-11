@@ -1,15 +1,10 @@
 import { NavLink } from "react-router-dom";
-// import { useForm } from "react-hook-form";
-// import axios from "axios";
-// import { baseUrl } from "../../config/config";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
 import signUp from "../../assets/others/register.jpg";
 import Halmet from "../../Components/Halmet";
-import { useContext } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
-  const { createuser } = useContext(AuthContext);
-
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,13 +13,9 @@ const SignUp = () => {
     const password = form.password.value;
     const selectedOption = form.countries.value;
     console.log(name, email, password, selectedOption);
-    createuser(email, password).then((result) => {
-      const loggedUser = result.user;
-      console.log("logged user", loggedUser);
-    });
 
     try {
-      const response = await axios.post(`${baseUrl}signup`, {
+      const response = await axios.post(`${baseUrl}/account/signup`, {
         name: name,
         email: email,
         password: password,

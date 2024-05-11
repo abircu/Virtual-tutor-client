@@ -1,23 +1,22 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import heroBg from "../../assets/others/heroBg.jpg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
-import axios from "axios";
+
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useAuth } from "../../Context/AuthContext";
 
 const SignIn = () => {
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState(true);
-  // use context api
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -25,54 +24,39 @@ const SignIn = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log("login data", email, password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log("+++ login user here +++", user);
-    });
-    Swal.fire({
-      title: "Login succesfully",
-      showClass: {
-        popup: `
-          animate__animated
-          animate__fadeInUp
-          animate__faster
-        `,
-      },
-      hideClass: {
-        popup: `
-          animate__animated
-          animate__fadeOutDown
-          animate__faster
-        `,
-      },
-    });
-    navigate(from, { replace: true });
+    const result = await signIn(email, password);
+    if (result.success) {
+      Swal.fire({
+        title: "Login succesfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+      });
+      navigate(from, { replace: true });
+    } else {
+      console.error("login failed:", result.error);
+    }
+
     from.reset();
   };
-  const handleFacebookLogin = async () => {
-    console.log("facebook login clicked");
-    try {
-      const response = await axios.post(`${baseUrl}signup`, {});
-      console.log("registration succesfulll", response.data);
-    } catch (error) {
-      console.log("registration failed", error.response.data);
-    }
-  };
 
-  const handleGoogleLogin = () => {
-    console.log("facebook login clicked");
-    // call api same formate of handlefacebooklogin
-  };
-  const handleGithubLogin = () => {
-    console.log("facebook login clicked");
-    // call api same formate of handlefacebooklogin
-  };
   const handleValidateCaptcha = (e) => {
     const user_captcha_value = e.target.value;
     if (validateCaptcha(user_captcha_value)) {
