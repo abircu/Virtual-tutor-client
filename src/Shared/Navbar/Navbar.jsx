@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
-import { AuthContext } from "../../Providers/AuthProvider";
+import AuthContext from "../../Context/AuthProvider";
+// import { useAuth } from "../../Context/AuthContext";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
+  console.log("auth response", auth);
+
   const handleLogOut = () => {
-    logOut()
+    signOut()
       .then(() => {})
       .catch((err) => console.log(err));
   };
@@ -41,6 +44,12 @@ const Navbar = () => {
           <a>Contact</a>
         </Link>
       </li>
+      <li>
+        <Link to="/login">
+          {" "}
+          <a>Login</a>
+        </Link>
+      </li>
 
       {/* <li>
         <Link to="/register">
@@ -48,7 +57,7 @@ const Navbar = () => {
           <a>SignUp</a>
         </Link>
       </li> */}
-      {user ? (
+      {/* {auth ? (
         <>
           <li>
             <Link to="/secret">
@@ -72,7 +81,7 @@ const Navbar = () => {
             </Link>
           </li>
         </>
-      )}
+      )} */}
     </>
   );
   return (

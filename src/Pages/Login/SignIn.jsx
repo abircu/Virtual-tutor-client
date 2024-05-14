@@ -1,9 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import heroBg from "../../assets/others/heroBg.jpg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaSquareFacebook } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
 
 import {
   loadCaptchaEnginge,
@@ -11,12 +8,14 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
-import { useAuth } from "../../Context/AuthContext";
+import AuthContext from "../../Context/AuthProvider";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
 
 const SignIn = () => {
   const captchaRef = useRef(null);
   const [disable, setDisable] = useState(true);
-  const { signIn } = useAuth();
+  const { setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -29,9 +28,21 @@ const SignIn = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log("login data", email, password);
-    const result = await signIn(email, password);
-    if (result.success) {
+
+    const response = await axios.post(
+      `${baseUrl}/account/login`,
+      JSON.stringify({ email, password }),
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
+    console.log(" after fetch login", JSON.stringify(response?.data));
+    // const mail = response?.data?.email;
+    // const pass = response?.data?.password;
+    // const result = response?.data;
+    setAuth(response?.data);
+    if (response?.data === true) {
       Swal.fire({
         title: "Login succesfully",
         showClass: {
@@ -54,7 +65,7 @@ const SignIn = () => {
       console.error("login failed:", result.error);
     }
 
-    from.reset();
+    form.reset();
   };
 
   const handleValidateCaptcha = (e) => {
@@ -144,9 +155,9 @@ const SignIn = () => {
                 with
               </p>
               <div className="flex gap-4 text-xl justify-center items-center mt-4">
-                <FaSquareFacebook onClick={handleFacebookLogin} />
+                {/* <FaSquareFacebook onClick={handleFacebookLogin} />
                 <FcGoogle onClick={handleGoogleLogin} />
-                <FaGithub onClick={handleGithubLogin} />
+                <FaGithub onClick={handleGithubLogin} /> */}
               </div>
               {/* dkkdf */}
             </div>

@@ -1,31 +1,61 @@
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import { baseUrl } from "../../config/config";
+import Swal from "sweetalert2";
 import signUp from "../../assets/others/register.jpg";
 import Halmet from "../../Components/Halmet";
+import { baseUrl } from "../../config/config";
 
 const SignUp = () => {
+  // const { setAuthUser, setisLoggedIn } = useAuth();
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const selectedOption = form.countries.value;
-    console.log(name, email, password, selectedOption);
+    const role = form.countries.value;
+    // const result = signUpFunction(name, email, password, role);
 
     try {
-      const response = await axios.post(`${baseUrl}/account/signup`, {
-        name: name,
-        email: email,
-        password: password,
-        role: selectedOption,
-      });
-      console.log("registration succesfulll", response.data);
-    } catch (error) {
-      console.log("registration failed", error.response.data);
+      const response = await axios
+        .post(`${baseUrl}/account/signup`, {
+          name,
+          email,
+          password,
+          role,
+        })
+        .then((data = response.data) => {
+          console.log("Registration successful", data);
+          // setAuthUser(data);
+          // setisLoggedIn(true);
+        });
+    } catch (err) {
+      console.log("request failed", err);
     }
-    form.reset();
+
+    if (result.success) {
+      Swal.fire({
+        title: "Login succesfully",
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+        },
+      });
+      navigate(from, { replace: true });
+    } else {
+      console.error("login failed:", result.error);
+    }
+    from.reset();
   };
 
   return (
@@ -66,7 +96,7 @@ const SignUp = () => {
                 Select an option
               </label>
               <select id="countries" className="bg-gray-50 p-2 rounded-lg">
-                <option selected>Choose a country</option>
+                <option selected>Choise your option</option>
                 <option value="Student">Student</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Admin">Admin</option>
