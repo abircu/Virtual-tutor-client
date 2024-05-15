@@ -1,20 +1,20 @@
 import React from "react";
-import LeftNav from "../../Components/VedioTutorial/LeftNav";
-import Header from "../../Components/VedioTutorial/Header";
-import { Container } from "postcss";
-import VideoScreen from "../../Components/VedioTutorial/VideoScreen";
 
+import styled from "styled-components";
+const Container = styled.div`
+  display: flex;
+`;
+const Main = styled.div`
+  flex: 7;
+`;
+const Wrapper = styled.div``;
 const VedioTutorial = () => {
   return (
-    <>
-      <Header />
-      <div className="">
-        <LeftNav></LeftNav>
-        <Container>
-          <VideoScreen></VideoScreen>
-        </Container>
-      </div>
-    </>
+    <Container>
+      <Main>
+        <Wrapper></Wrapper>
+      </Main>
+    </Container>
   );
 };
 

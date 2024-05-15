@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import signUp from "../../assets/others/register.jpg";
@@ -6,7 +6,9 @@ import Halmet from "../../Components/Halmet";
 import { baseUrl } from "../../config/config";
 
 const SignUp = () => {
-  // const { setAuthUser, setisLoggedIn } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,7 +16,6 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     const role = form.countries.value;
-    // const result = signUpFunction(name, email, password, role);
 
     try {
       const response = await axios
@@ -26,36 +27,29 @@ const SignUp = () => {
         })
         .then((data = response.data) => {
           console.log("Registration successful", data);
-          // setAuthUser(data);
-          // setisLoggedIn(true);
+          Swal.fire({
+            title: "Login succesfully",
+            showClass: {
+              popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `,
+            },
+            hideClass: {
+              popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `,
+            },
+          });
         });
+      navigate(from, { replace: true });
+      from.reset();
     } catch (err) {
       console.log("request failed", err);
     }
-
-    if (result.success) {
-      Swal.fire({
-        title: "Login succesfully",
-        showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
-        },
-        hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
-        },
-      });
-      navigate(from, { replace: true });
-    } else {
-      console.error("login failed:", result.error);
-    }
-    from.reset();
   };
 
   return (

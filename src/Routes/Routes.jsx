@@ -10,7 +10,7 @@ import PrivetRoutes from "./PrivetRoutes";
 import Secret from "../Shared/Secret/Secret";
 import PopularCard from "../Components/Home/PopularCard";
 import PcourseDetails from "../Components/Home/PcourseDetails";
-import Videos from "../Components/Videos";
+import Videos from "../Pages/VedioTutorial/Videos";
 import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Deshboard/Cart/Cart";

@@ -28,41 +28,44 @@ const SignIn = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    try {
+      const response = await axios.post(
+        `${baseUrl}/account/login`,
+        { email, password },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
 
-    const response = await axios.post(
-      `${baseUrl}/account/login`,
-      JSON.stringify({ email, password }),
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
-    console.log(" after fetch login", JSON.stringify(response?.data));
-    // const mail = response?.data?.email;
-    // const pass = response?.data?.password;
-    // const result = response?.data;
-    setAuth(response?.data);
-    if (response?.data === true) {
+      console.log("Login response:", response.data);
+
+      const { jwtToken, jwtTokenType, ...user } = response.data;
+
+      setAuth({
+        isAuthenticated: true,
+        user: user,
+      });
+
       Swal.fire({
-        title: "Login succesfully",
+        title: "Login successfully",
         showClass: {
-          popup: `
-            animate__animated
-            animate__fadeInUp
-            animate__faster
-          `,
+          popup: "animate__animated animate__fadeInUp animate__faster",
         },
         hideClass: {
-          popup: `
-            animate__animated
-            animate__fadeOutDown
-            animate__faster
-          `,
+          popup: "animate__animated animate__fadeOutDown animate__faster",
         },
       });
+
       navigate(from, { replace: true });
-    } else {
-      console.error("login failed:", result.error);
+    } catch (error) {
+      console.error("Login failed:", error.response.data);
+
+      Swal.fire({
+        icon: "error",
+        title: "Login failed",
+        text: "Invalid email or password. Please try again.",
+      });
     }
 
     form.reset();
@@ -150,9 +153,8 @@ const SignIn = () => {
                   className="text-blue-800 font-semibold text-xl px-3"
                   to="/register"
                 >
-                  signIn
+                  Register
                 </NavLink>
-                with
               </p>
               <div className="flex gap-4 text-xl justify-center items-center mt-4">
                 {/* <FaSquareFacebook onClick={handleFacebookLogin} />

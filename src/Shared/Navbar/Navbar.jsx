@@ -2,16 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
 import AuthContext from "../../Context/AuthProvider";
-// import { useAuth } from "../../Context/AuthContext";
 
 const Navbar = () => {
-  const { auth } = useContext(AuthContext);
+  const { auth, signOut, loading } = useContext(AuthContext);
   console.log("auth response", auth);
 
   const handleLogOut = () => {
-    signOut()
-      .then(() => {})
-      .catch((err) => console.log(err));
+    loading;
+    signOut();
   };
   const navOption = (
     <>
@@ -44,27 +42,9 @@ const Navbar = () => {
           <a>Contact</a>
         </Link>
       </li>
-      <li>
-        <Link to="/login">
-          {" "}
-          <a>Login</a>
-        </Link>
-      </li>
 
-      {/* <li>
-        <Link to="/register">
-          {" "}
-          <a>SignUp</a>
-        </Link>
-      </li> */}
-      {/* {auth ? (
+      {auth.isAuthenticated ? (
         <>
-          <li>
-            <Link to="/secret">
-              {" "}
-              <a>Secret</a>
-            </Link>
-          </li>
           <button
             onClick={handleLogOut}
             className="btn btn-ghost justify-center items-center text-xl font-bold"
@@ -81,14 +61,14 @@ const Navbar = () => {
             </Link>
           </li>
         </>
-      )} */}
+      )}
     </>
   );
   return (
     <div>
-      <div className="navbar fixed  z-10 md:bg-black  md:bg-opacity-45  text-black md:text-white     ">
+      <div className="navbar fixed  z-10 md:bg-black  md:bg-opacity-45  text-black md:text-white  justify-between  mx-auto  ">
         {/* <div className="navbar-bg bg-black  opacity-15 "></div> */}
-        <div className=" sm:navbar-center md:navbar-start">
+        <div className=" sm:navbar-center  lg:navbar-center">
           <div className="dropdown bg-white text-black ">
             <div
               tabIndex={0}
@@ -112,7 +92,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {navOption}
             </ul>

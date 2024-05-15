@@ -83,13 +83,6 @@ const PcourseDetails = () => {
               </h1>
             </div>
           </div>
-          <div className=" flex justify-end items-center mt-10">
-            <Link to="/popularcard">
-              <button className="btn  bg-indigo-600 text-white hover:text-black  w-20">
-                Back
-              </button>
-            </Link>
-          </div>
         </div>
       </div>
     </div>
