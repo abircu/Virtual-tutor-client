@@ -76,7 +76,6 @@ const SignUp = () => {
               <input
                 className="p-2 rounded-lg"
                 type="text"
-                // {...register("name")}
                 name="name"
                 id=""
                 placeholder="Enter your name"

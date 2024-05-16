@@ -37,27 +37,30 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
+      if (response && response.data) {
+        console.log("Login response:", response.data);
 
-      console.log("Login response:", response.data);
+        const { jwtToken, jwtTokenType, ...user } = response.data;
 
-      const { jwtToken, jwtTokenType, ...user } = response.data;
+        setAuth({
+          isAuthenticated: true,
+          user: user,
+        });
 
-      setAuth({
-        isAuthenticated: true,
-        user: user,
-      });
+        Swal.fire({
+          title: "Login successfully",
+          showClass: {
+            popup: "animate__animated animate__fadeInUp animate__faster",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutDown animate__faster",
+          },
+        });
 
-      Swal.fire({
-        title: "Login successfully",
-        showClass: {
-          popup: "animate__animated animate__fadeInUp animate__faster",
-        },
-        hideClass: {
-          popup: "animate__animated animate__fadeOutDown animate__faster",
-        },
-      });
-
-      navigate(from, { replace: true });
+        navigate(from, { replace: true });
+      } else {
+        throw new Error("Invalid resopose recive from server");
+      }
     } catch (error) {
       console.error("Login failed:", error.response.data);
 

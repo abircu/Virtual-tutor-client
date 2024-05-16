@@ -5,6 +5,11 @@ const Covered = ({ Img, title, description, btnText, btnID }) => {
   useEffect(() => {
     Aos.init();
   }, []);
+
+  const handleScroll = () => {
+    const element = document.getElementById(btnID);
+    element.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div
       className="hero min-h-fit lg:h-[700px]"
@@ -30,6 +35,7 @@ const Covered = ({ Img, title, description, btnText, btnID }) => {
             {description}
           </p>
           <button
+            onClick={handleScroll}
             data-aos="flip-right"
             className="btn btn-outline border-white border-b-4 text-white"
             id={btnID}

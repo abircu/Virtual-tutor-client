@@ -8,12 +8,12 @@ import VartualTutorInfo from "../../Components/Home/VartualTutorInfo";
 import Testimonials from "../../Components/Home/Testimonials";
 import Faq from "../../Components/Home/Faq";
 
-const Home = () => {
+const Home = ({ contetId }) => {
   return (
     <div className="bg-slate-200">
       <Halmet pagename={"Home"}></Halmet>
-      <Bannner></Bannner>
-      <Hero_top></Hero_top>
+      <Bannner contetId={"smoth"}></Bannner>
+      <Hero_top id="smoth"></Hero_top>
       <PopularCard></PopularCard>
       <AboutUs></AboutUs>
       <VartualTutorInfo></VartualTutorInfo>

@@ -1,7 +1,7 @@
 import Covered from "../Shared/Covered";
 import heroImage from "../assets/home/hero_image.jpg";
 
-const Bannner = () => {
+const Bannner = ({ contetId }) => {
   return (
     <Covered
       Img={heroImage}
@@ -10,6 +10,7 @@ const Bannner = () => {
         "Unlimited access to 7,000+ world-class courses, hands-on projects, and job-ready certificate programs—all included in your subscription"
       }
       btnText={"Get started"}
+      btnID={contetId}
     ></Covered>
   );
 };

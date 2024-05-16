@@ -2,12 +2,12 @@ import { FaArrowRight } from "react-icons/fa";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-const Hero_top = () => {
+const Hero_top = ({ sectionID }) => {
   useEffect(() => {
     Aos.init();
   }, []);
   return (
-    <div className=" w-full">
+    <div id={sectionID} className=" w-full">
       <div className="max-w-6xl mx-auto py-20">
         <div>
           <h1

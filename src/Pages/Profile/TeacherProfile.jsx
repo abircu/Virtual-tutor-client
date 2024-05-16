@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../Context/AuthProvider";
 import avatar from "../../assets/home/review.jpg";
+import Button from "../../Shared/Button/Button";
 
 const TeacherProfile = () => {
   const { auth } = useContext(AuthContext);
@@ -31,7 +32,10 @@ const TeacherProfile = () => {
       <h1 className="mt-10 text-4xl text-center font-bold">Name: {name}</h1>
       <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
       <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
-      <button className="">Update Profile</button>
+      <h1>message:{message}</h1>
+      <div className="flex justify-center items-center w-40 bg-black text-center m-20">
+        <Button></Button>
+      </div>
     </div>
   );
 };
