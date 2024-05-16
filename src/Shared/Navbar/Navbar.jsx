@@ -6,6 +6,8 @@ import AuthContext from "../../Context/AuthProvider";
 const Navbar = () => {
   const { auth, signOut, loading } = useContext(AuthContext);
   console.log("auth response", auth);
+  const { user } = auth;
+  console.log("user info", user);
 
   const handleLogOut = () => {
     loading;
@@ -42,6 +44,20 @@ const Navbar = () => {
           <a>Contact</a>
         </Link>
       </li>
+      {user.role === "Teacher" && (
+        <li>
+          <Link to="/teacher-profile">
+            <a href="">Teacher Profile</a>
+          </Link>
+        </li>
+      )}
+      {user.role === "Student" && (
+        <li>
+          <Link to="/student-profile">
+            <a href="">Student Profile</a>
+          </Link>
+        </li>
+      )}
 
       {auth.isAuthenticated ? (
         <>

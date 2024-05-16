@@ -28,7 +28,7 @@ const SignUp = () => {
         .then((data = response.data) => {
           console.log("Registration successful", data);
           Swal.fire({
-            title: "Login succesfully",
+            title: "Registered succesfully",
             showClass: {
               popup: `
                 animate__animated
@@ -89,7 +89,7 @@ const SignUp = () => {
               >
                 Select an option
               </label>
-              <select id="countries" className="bg-gray-50 p-2 rounded-lg">
+              <select id="countries" className="bg-gray-50 p-2 rounded-lg ">
                 <option selected>Choise your option</option>
                 <option value="Student">Student</option>
                 <option value="Teacher">Teacher</option>

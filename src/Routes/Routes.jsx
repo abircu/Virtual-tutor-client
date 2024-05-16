@@ -14,6 +14,8 @@ import Videos from "../Pages/VedioTutorial/Videos";
 import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Deshboard/Cart/Cart";
+import TeacherProfile from "../Pages/Profile/TeacherProfile";
+import StudentProfile from "../Pages/Profile/StudentProfile";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/teacher-profile",
+        element: <TeacherProfile></TeacherProfile>,
+      },
+      {
+        path: "/student-profile",
+        element: <StudentProfile></StudentProfile>,
       },
       {
         path: "/secret",
