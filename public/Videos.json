@@ -1,0 +1,154 @@
+
+   [
+      {
+        "id": "1",
+        "name": "Programming",
+        "courses": [
+          {
+            "id": "101",
+            "name": "Introduction to Python",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "Learn the basics of Python programming, one of the most popular and versatile programming languages.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032341/Videos/Course_Status_Programming_Hero_6_itxark.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032332/Videos/Course_Status_Programming_Hero_5_qmtf7f.mp4"
+          },
+          {
+            "id": "101",
+            "name": "Introduction to Python",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "Learn the basics of Python programming, one of the most popular and versatile programming languages.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032331/Videos/Course_Status_Programming_Hero_2_hz3pxt.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032329/Videos/Course_Status_Programming_Hero_8_wgwhiq.mp4"
+          },
+          {
+            "id": "101",
+            "name": "Introduction to Python",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "Learn the basics of Python programming, one of the most popular and versatile programming languages.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032320/Videos/Course_Status_Programming_Hero_1_puflte.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032320/Videos/Course_Status_Programming_Hero_1_puflte.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032307/Videos/Course_Status_Programming_Hero_10_keg2qq.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032312/Videos/Course_Status_Programming_Hero_3_yarjso.mp4"
+          },
+          {
+            "id": "102",
+            "name": "Java for Beginners",
+            "thumbnail": "https://res.cloudinary.com/dt3qrt76n/image/upload/v1714306486/Virtual-tutor/Webdev_pjzjho.jpg",
+            "introduction": "A comprehensive guide to getting started with Java programming.",
+            "video_source": "https://res.cloudinary.com/dt3qrt76n/video/upload/v1716032300/Videos/Course_Status_Programming_Hero_9_ivnnxe.mp4"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Data Science",
+        "courses": [
+          {
+            "id": "201",
+            "name": "Data Science with R",
+            "thumbnail": "https://example.com/thumbnails/r.jpg",
+            "introduction": "Explore data science concepts and techniques using the R programming language.",
+            "video_source": "https://example.com/videos/data_science_r.mp4"
+          },
+          {
+            "id": "202",
+            "name": "Machine Learning Basics",
+            "thumbnail": "https://example.com/thumbnails/ml.jpg",
+            "introduction": "An introduction to the fundamental concepts of machine learning.",
+            "video_source": "https://example.com/videos/ml_basics.mp4"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name": "Web Development",
+        "courses": [
+          {
+            "id": "301",
+            "name": "HTML & CSS Fundamentals",
+            "thumbnail": "https://example.com/thumbnails/html_css.jpg",
+            "introduction": "Learn how to create beautiful and responsive websites using HTML and CSS.",
+            "video_source": "https://example.com/videos/html_css_fundamentals.mp4"
+          },
+          {
+            "id": "302",
+            "name": "JavaScript Essentials",
+            "thumbnail": "https://example.com/thumbnails/js.jpg",
+            "introduction": "Master the basics of JavaScript, the programming language of the web.",
+            "video_source": "https://example.com/videos/js_essentials.mp4"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Digital Marketing",
+        "courses": [
+          {
+            "id": "401",
+            "name": "SEO Basics",
+            "thumbnail": "https://example.com/thumbnails/seo.jpg",
+            "introduction": "An introductory course on the fundamentals of search engine optimization.",
+            "video_source": "https://example.com/videos/seo_basics.mp4"
+          },
+          {
+            "id": "402",
+            "name": "Social Media Marketing",
+            "thumbnail": "https://example.com/thumbnails/smm.jpg",
+            "introduction": "Learn the strategies for successful marketing on social media platforms.",
+            "video_source": "https://example.com/videos/social_media_marketing.mp4"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Graphic Design",
+        "courses": [
+          {
+            "id": "501",
+            "name": "Adobe Photoshop for Beginners",
+            "thumbnail": "https://example.com/thumbnails/photoshop.jpg",
+            "introduction": "Get started with Adobe Photoshop and learn essential editing techniques.",
+            "video_source": "https://example.com/videos/photoshop_beginners.mp4"
+          },
+          {
+            "id": "502",
+            "name": "Illustrator Essentials",
+            "thumbnail": "https://example.com/thumbnails/illustrator.jpg",
+            "introduction": "Master the basics of Adobe Illustrator for creating vector graphics.",
+            "video_source": "https://example.com/videos/illustrator_essentials.mp4"
+          }
+        ]
+      }
+    ]
+  
+  

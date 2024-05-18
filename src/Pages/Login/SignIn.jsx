@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import heroBg from "../../assets/others/heroBg.jpg";
+import heroBg from "../../assets/others/LoginBg.jpg";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import {

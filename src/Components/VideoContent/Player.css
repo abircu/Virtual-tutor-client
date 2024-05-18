@@ -1,0 +1,10 @@
+.video-container {
+  
+    padding-top: 56.25%; 
+  }
+  
+  .react-player {
+   
+    top: 0;
+    left: 0;
+  }

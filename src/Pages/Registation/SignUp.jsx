@@ -1,7 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
-import signUp from "../../assets/others/register.jpg";
+import signUp from "../../assets/others/Registration.jpg";
 import Halmet from "../../Components/Halmet";
 import { baseUrl } from "../../config/config";
 

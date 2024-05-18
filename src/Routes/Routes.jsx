@@ -10,12 +10,16 @@ import PrivetRoutes from "./PrivetRoutes";
 import Secret from "../Shared/Secret/Secret";
 import PopularCard from "../Components/Home/PopularCard";
 import PcourseDetails from "../Components/Home/PcourseDetails";
-import Videos from "../Pages/VedioTutorial/Videos";
+
 import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Deshboard/Cart/Cart";
 import TeacherProfile from "../Pages/Profile/TeacherProfile";
 import StudentProfile from "../Pages/Profile/StudentProfile";
+import VideoContent from "../Pages/VedioTutorial/VideoContent";
+import Thamnail from "../Components/VideoContent/Thamnail";
+import Category from "../Components/VideoContent/Category";
+import VideoPlayer from "../Components/VideoContent/VideoPlayer";
 
 export const router = createBrowserRouter([
   {
@@ -52,7 +56,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/videos",
-        element: <Videos></Videos>,
+        element: <VideoContent></VideoContent>,
+      },
+      {
+        path: "/category",
+        element: <Category></Category>,
+      },
+      {
+        path: "/category/:id",
+        element: <Thamnail></Thamnail>,
+      },
+      {
+        path: "/courses/:courseId",
+        element: <VideoPlayer></VideoPlayer>,
       },
       {
         path: "/contact",
