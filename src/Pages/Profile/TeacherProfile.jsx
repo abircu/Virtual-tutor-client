@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../Context/AuthProvider";
 import avatar from "../../assets/home/review.jpg";
-import Button from "../../Shared/Button/Button";
+import { Link } from "react-router-dom";
 
 const TeacherProfile = () => {
   const { auth } = useContext(AuthContext);
@@ -13,28 +13,60 @@ const TeacherProfile = () => {
   const { name, email, role, photo, message } = auth.user;
 
   return (
-    <div className="py-20 min-h-screen">
-      <div className=" mt-20 flex justify-center items-center">
-        {photo === null ? (
-          <>
-            <img
-              src={avatar}
-              alt="Profile"
-              className="profile-photo  w-40 h-40 rounded-full"
-            />
-          </>
-        ) : (
-          <>
-            <img src={photo} alt="Profile" className="profile-photo" />
-          </>
-        )}
-      </div>
-      <h1 className="mt-10 text-4xl text-center font-bold">Name: {name}</h1>
-      <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
-      <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
-      <h1>message:{message}</h1>
-      <div className="flex justify-center items-center w-40 bg-black text-center m-20">
-        <Button></Button>
+    <div className="py-20 min-h-screen bg-indigo-400 p-2">
+      <div className="max-w-6xl mx-auto ">
+        <div className="mt-20 flex justify-center items-center">
+          {photo === null ? (
+            <>
+              <img
+                src={avatar}
+                alt="Profile"
+                className="profile-photo  w-40 h-40 rounded-full"
+              />
+            </>
+          ) : (
+            <>
+              <img src={photo} alt="Profile" className="profile-photo" />
+            </>
+          )}
+        </div>
+        <h1 className="mt-10 text-4xl text-center font-bold">Name: {name}</h1>
+        <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
+        <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
+        <div className="py-10">
+          <div className="grid gap-6 gird-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <Link>
+              <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
+                Update Profile
+              </button>
+            </Link>
+            <Link>
+              <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
+                Create Course
+              </button>
+            </Link>
+            <Link>
+              <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
+                Update Course
+              </button>
+            </Link>
+            <Link>
+              <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
+                Delete Course
+              </button>
+            </Link>
+          </div>
+        </div>
+        <div className="py-10">
+          <h1 className="text-2xl font-bold">Tacher Info:</h1>
+          <p className="text-xl font-semibold mt-10">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eveniet
+            alias neque rerum voluptatem, a dicta quidem libero sunt vero,
+            aperiam quasi, veritatis necessitatibus eos placeat quis esse minus
+            iusto.
+          </p>
+          <h2 className="text-2xl font-bold mt-10">Skills</h2>
+        </div>
       </div>
     </div>
   );
