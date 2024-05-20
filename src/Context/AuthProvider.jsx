@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     setAuth({
       isAuthenticated: false,
       user: null,
+      // write somethings
     });
   };
 
