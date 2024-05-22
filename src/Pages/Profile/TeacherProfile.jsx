@@ -34,18 +34,18 @@ const TeacherProfile = () => {
         <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
         <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
         <div className="py-10">
-          <div className="grid gap-6 gird-cols-1 md:grid-cols-2 lg:grid-cols-4">
-            <Link>
+          <div className="flex flex-col md:flex-row  gap-4  justify-center items-center ">
+            <Link to="/update-profile">
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
                 Update Profile
               </button>
             </Link>
-            <Link>
+            <Link to="/mycourse">
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
-                Create Course
+                My courses
               </button>
             </Link>
-            <Link>
+            {/* <Link>
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
                 Update Course
               </button>
@@ -54,7 +54,7 @@ const TeacherProfile = () => {
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
                 Delete Course
               </button>
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className="py-10">

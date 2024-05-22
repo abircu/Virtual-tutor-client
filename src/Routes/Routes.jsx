@@ -20,6 +20,8 @@ import VideoContent from "../Pages/VedioTutorial/VideoContent";
 import Thamnail from "../Components/VideoContent/Thamnail";
 import Category from "../Components/VideoContent/Category";
 import VideoPlayer from "../Components/VideoContent/VideoPlayer";
+import UpdateProfile from "../Components/Profile/UpdateProfile";
+import MyCourse from "../Components/Profile/MyCourse";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +83,14 @@ export const router = createBrowserRouter([
       {
         path: "/student-profile",
         element: <StudentProfile></StudentProfile>,
+      },
+      {
+        path: "/update-profile",
+        element: <UpdateProfile></UpdateProfile>,
+      },
+      {
+        path: "/mycourse",
+        element: <MyCourse></MyCourse>,
       },
       {
         path: "/secret",
