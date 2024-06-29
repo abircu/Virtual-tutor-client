@@ -46,16 +46,11 @@ const TeacherProfile = () => {
                 My courses
               </button>
             </Link>
-            {/* <Link>
+            <Link to="/uploadcourse">
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
-                Update Course
+                Course Upload
               </button>
             </Link>
-            <Link>
-              <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
-                Delete Course
-              </button>
-            </Link> */}
           </div>
         </div>
         <div className="py-10">
