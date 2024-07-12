@@ -34,6 +34,7 @@ const TeacherProfile = () => {
         <h1 className="mt-10 text-4xl text-center font-bold">Name: {name}</h1>
         <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
         <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
+
         <div className="py-10">
           <div className="flex flex-col md:flex-row  gap-4  justify-center items-center ">
             <Link to="/update-profile">

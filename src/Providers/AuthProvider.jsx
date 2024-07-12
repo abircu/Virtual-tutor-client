@@ -6,7 +6,6 @@ import {
   signOut,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { app } from "../config/firebase_config";
 
 export const AuthContext = createContext(null);
 

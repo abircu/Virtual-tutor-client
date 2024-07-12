@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(savedAuth)
       : { isAuthenticated: false, user: null };
   });
+  console.log("provider auth info", auth);
   const [loadig, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);

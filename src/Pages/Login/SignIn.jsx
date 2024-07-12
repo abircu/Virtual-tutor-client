@@ -34,13 +34,14 @@ const SignIn = () => {
         { email, password },
         {
           headers: { "Content-Type": "application/json" },
+          // headers: { "Authorization": `Bearer ${}` },
           withCredentials: true,
         }
       );
       if (response && response.data) {
         console.log("Login response:", response.data);
 
-        const { jwtToken, jwtTokenType, ...user } = response.data;
+        const { ...user } = response.data;
 
         setAuth({
           isAuthenticated: true,

@@ -2,15 +2,55 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
 import AuthContext from "../../Context/AuthProvider";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
 
 const Navbar = () => {
   const { auth, signOut } = useContext(AuthContext);
 
   const isAuthenticated = auth && auth.isAuthenticated;
   const user = isAuthenticated ? auth.user : null;
+  // const { email, jwtToken } = user;
+  // console.log("user email and token", email, jwtToken);
 
-  const handleLogOut = () => {
-    signOut();
+  const handleLogOut = async () => {
+    if (!user) {
+      console.error("User is not authenticated");
+      return;
+    }
+
+    const { email, jwtToken } = user;
+
+    if (!email || !jwtToken) {
+      console.error("Email or JWT token is missing");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `${baseUrl}/account/logout`,
+        { email, token: jwtToken }, // Adjusted the payload structure if necessary
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const header1 = response.headers["header-name-1"];
+        const header2 = response.headers["header-name-2"];
+        console.log("Header 1:", header1);
+        console.log("Header 2:", header2);
+
+        signOut();
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error during logout", error);
+    }
   };
 
   return (
@@ -51,12 +91,12 @@ const Navbar = () => {
             </li>
             {isAuthenticated && (
               <>
-                {user && user.role === "Teacher" && (
+                {user && user.role === "TEACHER" && (
                   <li>
                     <Link to="/teacher-profile">Teacher Profile</Link>
                   </li>
                 )}
-                {user && user.role === "Student" && (
+                {user && user.role === "STUDENT" && (
                   <li>
                     <Link to="/student-profile">Student Profile</Link>
                   </li>
@@ -101,12 +141,12 @@ const Navbar = () => {
           </li>
           {isAuthenticated && (
             <>
-              {user && user.role === "Teacher" && (
+              {user && user.role === "TEACHER" && (
                 <li>
                   <Link to="/teacher-profile">Teacher Profile</Link>
                 </li>
               )}
-              {user && user.role === "Student" && (
+              {user && user.role === "STUDENT" && (
                 <li>
                   <Link to="/student-profile">Student Profile</Link>
                 </li>

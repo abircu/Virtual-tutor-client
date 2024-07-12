@@ -1,16 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import AuthContext from "../../Context/AuthProvider";
+import AuthContext, { AuthProvider } from "../../Context/AuthProvider";
 import Select from "react-select";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
 
 const UpdateProfile = () => {
   const { auth, loading } = useContext(AuthContext);
-  const [name, setName] = useState("");
+  const [firstName, setFistName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [image, setImage] = useState(null);
-  const [option, setOption] = useState("");
-  const [text, setText] = useState("");
+  const [photo, setPhoto] = useState(null);
+  const [degree, setDegree] = useState("");
+  const [bio, setText] = useState("");
   const [skills, setSkills] = useState([]);
+  const [language, setLanguage] = useState("");
+  const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [id, setId] = useState("");
 
   const skillOptions = [
     { value: "JavaScript", label: "JavaScript" },
@@ -27,9 +35,10 @@ const UpdateProfile = () => {
 
   useEffect(() => {
     if (auth.user) {
-      setName(auth.user.name || "");
+      setFistName(auth.user.name || "");
       setEmail(auth.user.email || "");
       setRole(auth.user.role || "");
+      setId(auth.user.id || " ");
     }
   }, [auth]);
 
@@ -41,31 +50,79 @@ const UpdateProfile = () => {
     return <div>...Loading</div>;
   }
 
-  const handleUpdateProfile = (e) => {
+  const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const role = form.role.value;
-    const email = form.email.value;
-    const image = form.image.files[0];
-    const option = form.option.value;
-    const text = form.text.value;
-    const allValues = { name, role, email, image, option, text, skills };
-    console.log("Update profile information is", allValues);
-    form.reset();
+    const { jwtToken } = auth.user;
+
+    const allValues = {
+      id,
+      firstName,
+      role,
+      email,
+      photo,
+      degree,
+      bio,
+      skills,
+      language,
+      phone,
+      gender,
+      city,
+      country,
+    };
+
+    try {
+      const response = await axios.patch(
+        `${baseUrl}/teacher/update`,
+        allValues,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        }
+      );
+
+      console.log("Update API response:", response.data);
+
+      // Reset state values after successful submission
+      setFistName("");
+      setRole("");
+      setEmail("");
+      setPhoto(null);
+      setDegree("");
+      setText("");
+      setSkills([]);
+      setLanguage("");
+      setPhone("");
+      setGender("");
+      setCountry("");
+      setCity("");
+
+      // Optionally, perform additional actions upon successful update
+    } catch (error) {
+      console.error("Update API error:", error);
+      // Handle error state or show error message to the user
+    }
   };
+
   const handleSkillsChange = (selectedOptions) => {
     setSkills(
       selectedOptions ? selectedOptions.map((option) => option.value) : []
     );
   };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPhone(file);
+    }
+  };
 
   return (
-    <div className="bg-indigo-400 py-20 p-2 min-h-screen">
+    <div className="bg-indigo-400 py-20 p-2 min-h-screen ">
       <div className="max-w-6xl mx-auto items-center justify-center">
         <form
           onSubmit={handleUpdateProfile}
-          className=" p-2 md:p-6 mt-10 shadow-lg shadow-black"
+          className=" p-2 md:p-6 mt-10 shadow-xl shadow-black rounded-lg"
         >
           <div className="flex md:flex-row flex-col mt-10 gap-10">
             <div className="flex-1">
@@ -77,7 +134,7 @@ const UpdateProfile = () => {
                   type="text"
                   name="name"
                   id="name"
-                  value={name}
+                  value={firstName}
                   onChange={(e) => setName(e.target.value)}
                   className="rounded-lg w-full bg-white py-2 px-3"
                 />
@@ -106,21 +163,47 @@ const UpdateProfile = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="rounded-lg w-full bg-white py-2 px-3"
-                  readOnly
+                />
+              </div>
+              <div className="flex flex-col my-14">
+                <label htmlFor="email" className="text-xl font-bold mb-2">
+                  Language
+                </label>
+                <input
+                  type="text"
+                  name="language"
+                  id="language"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className="rounded-lg w-full bg-white py-2 px-3"
+                />
+              </div>
+              <div className="flex flex-col my-14">
+                <label htmlFor="email" className="text-xl font-bold mb-2">
+                  Gender
+                </label>
+                <input
+                  type="text"
+                  name="gender"
+                  id="gender"
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  className="rounded-lg w-full bg-white py-2 px-3"
                 />
               </div>
             </div>
             <div className="flex-1">
               <div className="flex flex-col mb-14">
                 <label htmlFor="image" className="text-xl font-bold mb-2">
-                  Photo
+                  Choose an image:
                 </label>
+
                 <input
                   type="file"
                   id="image"
-                  name="image"
-                  accept="image/*"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  name="file"
+                  accept="image/gif, image/jpeg, image/png"
+                  onChange={handleImageChange}
                   className="px-3 rounded-lg py-1"
                 />
               </div>
@@ -131,8 +214,8 @@ const UpdateProfile = () => {
                 <select
                   name="option"
                   id="option"
-                  value={option}
-                  onChange={(e) => setOption(e.target.value)}
+                  value={degree}
+                  onChange={(e) => setDegree(e.target.value)}
                   className=" w-full  text-xl font-semibold px-3 rounded-lg py-1 "
                 >
                   <option disabled value="">
@@ -169,7 +252,47 @@ const UpdateProfile = () => {
                   onChange={handleSkillsChange}
                 />
               </div>
+              <div className="flex flex-col mb-14">
+                <label htmlFor="image" className="text-xl font-bold mb-2">
+                  Phone
+                </label>
+                <input
+                  type="number"
+                  id="phone"
+                  name="phone"
+                  value={phone}
+                  placeholder="Enter your phone number"
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="ounded-lg w-full bg-white py-2 px-3"
+                />
+              </div>
+              <div className="flex flex-col mb-14">
+                <label htmlFor="name" className="text-xl font-bold mb-2">
+                  Country
+                </label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className="rounded-lg w-full bg-white py-2 px-3 uppercase"
+                />
+              </div>
             </div>
+          </div>
+          <div className="mb-6">
+            <label htmlFor="" className="text-xl font-bold mb-2">
+              City
+            </label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-full py-2 px-2 rounded-lg bg-white uppercase"
+            />
           </div>
           <div className="flex flex-col mb-14">
             <label htmlFor="text" className="text-xl font-bold mb-2">
@@ -179,7 +302,7 @@ const UpdateProfile = () => {
               name="text"
               id="text"
               rows={4}
-              value={text}
+              value={bio}
               onChange={(e) => setText(e.target.value)}
               className="rounded-lg px-3"
             ></textarea>

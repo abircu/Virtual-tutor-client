@@ -90,9 +90,9 @@ const SignUp = () => {
               </label>
               <select id="countries" className="bg-gray-50 p-2 rounded-lg ">
                 <option selected>Choise your option</option>
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-                <option value="Admin">Admin</option>
+                <option value="STUDENT">Student</option>
+                <option value="TEACHER">Teacher</option>
+                <option value="ADMIN">Admin</option>
               </select>
             </div>
             <div className="flex flex-col">
