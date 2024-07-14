@@ -10,7 +10,6 @@ const UpdateProfile = () => {
   const [firstName, setFistName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-  const [photo, setPhoto] = useState(null);
   const [degree, setDegree] = useState("");
   const [bio, setText] = useState("");
   const [skills, setSkills] = useState([]);
@@ -20,6 +19,7 @@ const UpdateProfile = () => {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [id, setId] = useState("");
+  const [photo, setPhoto] = useState(null);
 
   const skillOptions = [
     { value: "JavaScript", label: "JavaScript" },
@@ -111,12 +111,14 @@ const UpdateProfile = () => {
       selectedOptions ? selectedOptions.map((option) => option.value) : []
     );
   };
-  const handleImageChange = async (e) => {
+  const handleImageChange = (e) => {
     var reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = () => {
       setPhoto(reader.result);
+      console.log(photo);
     };
+
     reader.onerror = (error) => {
       console.log("error: ", error);
     };

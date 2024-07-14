@@ -8,50 +8,59 @@ import { baseUrl } from "../../config/config";
 const Navbar = () => {
   const { auth, signOut } = useContext(AuthContext);
 
+  // const { email, jwtToken } = auth.user;
   const isAuthenticated = auth && auth.isAuthenticated;
   const user = isAuthenticated ? auth.user : null;
-  const { email, jwtToken } = user;
-  console.log("user email and token", email, jwtToken);
+
+  // if (auth && auth.user) {
+  //   const { email, jwtToken } = auth.user;
+  //   const isAuthenticated = true;
+  //   console.log("user email and token", email, jwtToken);
+  // }
 
   const handleLogOut = async () => {
-    // signOut();
-    if (!user) {
-      console.error("User is not authenticated");
-      return;
-    }
+    signOut();
+    // if (!user) {
+    //   console.error("User is not authenticated");
+    //   // signOut();
+    // }
 
-    const { email, jwtToken } = user;
+    // const { email, jwtToken } = user;
 
-    if (!email || !jwtToken) {
-      console.error("Email or JWT token is missing");
-      return;
-    }
+    // if (!email || !jwtToken) {
+    //   console.error("Email or JWT token is missing");
 
-    try {
-      const response = await axios.post(
-        `${baseUrl}/account/logout`,
-        { email, token: jwtToken },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${jwtToken}`,
-          },
-        }
-      );
+    //   // signOut();
+    // }
 
-      if (response.status != 200) {
-        const header1 = response.headers["header-name-1"];
-        const header2 = response.headers["header-name-2"];
-        console.log("Header 1:", header1);
-        console.log("Header 2:", header2);
+    console.log(email);
+    console.log(user);
 
-        // signOut();
-      } else {
-        console.error("Logout failed");
-      }
-    } catch (error) {
-      console.error("Error during logout", error);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     `${baseUrl}/account/logout`,
+    //     { email, token: jwtToken },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${jwtToken}`,
+    //       },
+    //     }
+    //   );
+
+    //   if (response.status === 200) {
+    //     const header1 = response.headers["header-name-1"];
+    //     const header2 = response.headers["header-name-2"];
+    //     console.log("Header 1:", header1);
+    //     console.log("Header 2:", header2);
+
+    //     signOut();
+    //   } else {
+    //     console.error("Logout failed");
+    //   }
+    // } catch (error) {
+    //   console.error("Error during logout", error);
+    // }
   };
 
   return (

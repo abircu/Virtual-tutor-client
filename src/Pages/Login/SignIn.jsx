@@ -28,13 +28,13 @@ const SignIn = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    console.log("ddfd", email, password);
     try {
       const response = await axios.post(
         `${baseUrl}/account/login`,
         { email, password },
         {
           headers: { "Content-Type": "application/json" },
-          // headers: { "Authorization": `Bearer ${}` },
           withCredentials: true,
         }
       );
