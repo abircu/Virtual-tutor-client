@@ -3,6 +3,7 @@ import AuthContext, { AuthProvider } from "../../Context/AuthProvider";
 import Select from "react-select";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
+import { render } from "react-dom";
 
 const UpdateProfile = () => {
   const { auth, loading } = useContext(AuthContext);
@@ -110,11 +111,15 @@ const UpdateProfile = () => {
       selectedOptions ? selectedOptions.map((option) => option.value) : []
     );
   };
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPhone(file);
-    }
+  const handleImageChange = async (e) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setPhoto(reader.result);
+    };
+    reader.onerror = (error) => {
+      console.log("error: ", error);
+    };
   };
 
   return (
@@ -197,15 +202,26 @@ const UpdateProfile = () => {
                 <label htmlFor="image" className="text-xl font-bold mb-2">
                   Choose an image:
                 </label>
-
-                <input
-                  type="file"
-                  id="image"
-                  name="file"
-                  accept="image/gif, image/jpeg, image/png"
-                  onChange={handleImageChange}
-                  className="px-3 rounded-lg py-1"
-                />
+                <div className="flex">
+                  <input
+                    type="file"
+                    id="image"
+                    name="file"
+                    accept="image/gif, image/jpeg, image/png"
+                    onChange={handleImageChange}
+                    className="px-3 rounded-lg py-1"
+                  />
+                  {photo == "" || photo == null ? (
+                    " "
+                  ) : (
+                    <img
+                      className="rounded-full"
+                      width={40}
+                      height={40}
+                      src={photo}
+                    />
+                  )}
+                </div>
               </div>
               <div className="flex flex-col mb-14">
                 <label htmlFor="option" className="text-xl font-bold mb-2">

@@ -2,8 +2,17 @@ import React, { useContext } from "react";
 import AuthContext from "../../Context/AuthProvider";
 import avatar from "../../assets/home/review.jpg";
 import { Link } from "react-router-dom";
+import { GrEdit } from "react-icons/gr";
+import FontAowsame from "../../Shared/FontAowsame";
 
 const TeacherProfile = () => {
+  const [profileImage, setProfileImage] = "";
+
+  const handleFileChange = (e) => {
+    console.log("skdkd", e);
+    setProfileImage(e.target.files[0]);
+  };
+
   const { auth } = useContext(AuthContext);
 
   if (!auth || !auth.user) {
@@ -16,6 +25,17 @@ const TeacherProfile = () => {
     <div className="py-20 min-h-screen bg-indigo-400 p-2">
       <div className="max-w-6xl mx-auto ">
         <div className="mt-20 flex justify-center items-center">
+          <div className="relative ">
+            <label className=" top-4  absolute  cursor-pointer text-white  text-3xl font-bold py-2 px-4 rounded mt-4">
+              <FontAowsame icon={<GrEdit></GrEdit>} className=" " />
+              <input
+                type="file"
+                className="hidden"
+                onChange={handleFileChange}
+                accept="image/*"
+              />
+            </label>
+          </div>
           {photo === null ? (
             <>
               <img

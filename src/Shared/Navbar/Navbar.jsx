@@ -10,10 +10,11 @@ const Navbar = () => {
 
   const isAuthenticated = auth && auth.isAuthenticated;
   const user = isAuthenticated ? auth.user : null;
-  // const { email, jwtToken } = user;
-  // console.log("user email and token", email, jwtToken);
+  const { email, jwtToken } = user;
+  console.log("user email and token", email, jwtToken);
 
   const handleLogOut = async () => {
+    // signOut();
     if (!user) {
       console.error("User is not authenticated");
       return;
@@ -29,7 +30,7 @@ const Navbar = () => {
     try {
       const response = await axios.post(
         `${baseUrl}/account/logout`,
-        { email, token: jwtToken }, // Adjusted the payload structure if necessary
+        { email, token: jwtToken },
         {
           headers: {
             "Content-Type": "application/json",
@@ -38,13 +39,13 @@ const Navbar = () => {
         }
       );
 
-      if (response.status === 200) {
+      if (response.status != 200) {
         const header1 = response.headers["header-name-1"];
         const header2 = response.headers["header-name-2"];
         console.log("Header 1:", header1);
         console.log("Header 2:", header2);
 
-        signOut();
+        // signOut();
       } else {
         console.error("Logout failed");
       }

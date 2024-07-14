@@ -42,12 +42,12 @@ const SignIn = () => {
         console.log("Login response:", response.data);
 
         const { ...user } = response.data;
-
-        setAuth({
-          isAuthenticated: true,
-          user: user,
-        });
-
+        if (user) {
+          setAuth({
+            isAuthenticated: true,
+            user: user,
+          });
+        }
         Swal.fire({
           title: "Login successfully",
           showClass: {
