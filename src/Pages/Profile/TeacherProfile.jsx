@@ -1,41 +1,54 @@
-import React, { useContext } from "react";
-import AuthContext from "../../Context/AuthProvider";
+import React, { useContext, useEffect, useState } from "react";
+
 import avatar from "../../assets/home/review.jpg";
 import { Link } from "react-router-dom";
 import { GrEdit } from "react-icons/gr";
 import FontAowsame from "../../Shared/FontAowsame";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
+import AuthContext from "../../Context/AuthProvider";
 
 const TeacherProfile = () => {
+  const { auth } = useContext(AuthContext);
+  const [update, setUpdate] = useState(null);
   const [profileImage, setProfileImage] = "";
+  const token = auth.user.jwtToken;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${baseUrl}/teacher/get/${auth.user.id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        setUpdate(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [baseUrl, auth.id, token, setUpdate]);
 
   const handleFileChange = (e) => {
-    console.log("skdkd", e);
     setProfileImage(e.target.files[0]);
   };
-
-  const { auth } = useContext(AuthContext);
 
   if (!auth || !auth.user) {
     return <div>Loading...</div>;
   }
 
-  const { name, email, role, photo, message } = auth.user;
+  const { name, email, role, photo, message, id } = auth.user;
 
   return (
     <div className="py-20 min-h-screen bg-indigo-400 p-2">
       <div className="max-w-6xl mx-auto ">
         <div className="mt-20 flex justify-center items-center">
-          <div className="relative ">
-            <label className=" top-4  absolute  cursor-pointer text-white  text-3xl font-bold py-2 px-4 rounded mt-4">
-              <FontAowsame icon={<GrEdit></GrEdit>} className=" " />
-              <input
-                type="file"
-                className="hidden"
-                onChange={handleFileChange}
-                accept="image/*"
-              />
-            </label>
-          </div>
           {photo === null ? (
             <>
               <img
@@ -47,13 +60,17 @@ const TeacherProfile = () => {
             </>
           ) : (
             <>
-              <img src={photo} alt="Profile" className="profile-photo" />
+              <img
+                src={photo}
+                alt="Profile"
+                className="w-40 h-40 rounded-full"
+              />
             </>
           )}
         </div>
-        <h1 className="mt-10 text-4xl text-center font-bold">Name: {name}</h1>
-        <h1 className="mt-10 text-2xl text-center font-bold">Role: {role}</h1>
-        <h1 className="mt-10 text-2xl text-center font-bold">Email: {email}</h1>
+        <h1 className="mt-10 text-4xl text-center font-bold"> {name}</h1>
+
+        {/* <h1 className="mt-10 text-2xl text-center font-bold">id: {id}</h1> */}
 
         <div className="py-10">
           <div className="flex flex-col md:flex-row  gap-4  justify-center items-center ">
@@ -74,15 +91,42 @@ const TeacherProfile = () => {
             </Link>
           </div>
         </div>
-        <div className="py-10">
-          <h1 className="text-2xl font-bold">Tacher Info:</h1>
-          <p className="text-xl font-semibold mt-10">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui eveniet
-            alias neque rerum voluptatem, a dicta quidem libero sunt vero,
-            aperiam quasi, veritatis necessitatibus eos placeat quis esse minus
-            iusto.
-          </p>
-          <h2 className="text-2xl font-bold mt-10">Skills</h2>
+        <div className="flex md:flex-row flex-col">
+          <div className="flex-1 ">
+            <div className="py-10">
+              <h1 className="text-xl font-semibold">Tacher Info:</h1>
+              <p className="">{update?.bio}</p>
+              <h1 className="text-xl font-semibold mt-10">Degree</h1>
+              <p>{update?.degree}</p>
+              <h2 className="text-xl font-semibold mt-10">Skills</h2>
+              <p className="flex flex-col">
+                {update?.skills.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))}
+              </p>
+            </div>
+          </div>
+          <div className="flex-1  flex-col border-l-2 border-gray-600 pl-10 ">
+            <h1 className="text-xl font-semibold mt-10">Language:</h1>
+            <p>{update?.language}</p>
+            <h1 className="text-xl font-semibold mt-10">Contact:</h1>
+            <div className="flex flex-col">
+              <p className=" flex gap-2">
+                gmail:
+                <p>{email}</p>
+              </p>
+              <p className=" flex gap-2">
+                Mobail:<p>{update?.phone}</p>
+              </p>
+            </div>
+
+            <h1 className="text-xl font-semibold">Gender:</h1>
+            <p>{update?.gender}</p>
+            <h1 className="text-xl font-semibold">City:</h1>
+            <p>{update?.city}</p>
+            <h1 className="text-xl font-semibold">Country:</h1>
+            <p>{update?.country}</p>
+          </div>
         </div>
       </div>
     </div>

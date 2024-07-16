@@ -63,7 +63,8 @@ const SignIn = () => {
         throw new Error("Invalid resopose recive from server");
       }
     } catch (error) {
-      console.error("Login failed:", error.response.data);
+      console.log(error);
+      // console.error("Login failed:", error.response.data);
 
       Swal.fire({
         icon: "error",
