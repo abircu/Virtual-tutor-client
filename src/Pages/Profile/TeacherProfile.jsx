@@ -49,7 +49,7 @@ const TeacherProfile = () => {
     <div className="py-20 min-h-screen bg-indigo-400 p-2">
       <div className="max-w-6xl mx-auto ">
         <div className="mt-20 flex justify-center items-center">
-          {photo === null ? (
+          {update?.photo === null ? (
             <>
               <img
                 src={avatar}
@@ -61,7 +61,7 @@ const TeacherProfile = () => {
           ) : (
             <>
               <img
-                src={photo}
+                src={update?.photo}
                 alt="Profile"
                 className="w-40 h-40 rounded-full"
               />

@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import AuthContext from "../../Context/AuthProvider";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
+import { ClassSharp } from "@mui/icons-material";
 
 const SignIn = () => {
   const captchaRef = useRef(null);
@@ -42,6 +43,7 @@ const SignIn = () => {
         console.log("Login response:", response.data);
 
         const { ...user } = response.data;
+
         if (user) {
           setAuth({
             isAuthenticated: true,
@@ -57,6 +59,7 @@ const SignIn = () => {
             popup: "animate__animated animate__fadeOutDown animate__faster",
           },
         });
+        // console.log("login user", user);
 
         navigate(from, { replace: true });
       } else {

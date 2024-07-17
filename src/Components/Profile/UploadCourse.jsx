@@ -137,14 +137,19 @@ const UploadCourse = () => {
                   >
                     Course Type
                   </label>
-                  <input
-                    type="text"
-                    name="type"
+                  <select
+                    name="option"
+                    id="option"
                     value={type}
                     onChange={(e) => setType(e.target.value)}
-                    placeholder="Select course type"
-                    className="bg-white text-gray-400 px-2 py-1 font-semibold rounded-lg"
-                  />
+                    className=" w-full  text-xl font-semibold px-3 rounded-lg py-1 "
+                  >
+                    <option className="text-xl text-gray-400" disabled value="">
+                      Select course type
+                    </option>
+                    <option>SKILL</option>
+                    <option>ACADEMIC</option>
+                  </select>
                 </div>
                 <div className="flex flex-col gap-2 mt-4">
                   <label

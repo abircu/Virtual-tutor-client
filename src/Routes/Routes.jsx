@@ -23,6 +23,8 @@ import VideoPlayer from "../Components/VideoContent/VideoPlayer";
 import UpdateProfile from "../Components/Profile/UpdateProfile";
 import MyCourse from "../Components/Profile/MyCourse";
 import UploadCourse from "../Components/Profile/UploadCourse";
+import ViewModule from "../Components/CourseModule/ViewModule";
+import CreateModule from "../Components/CourseModule/CreateModule";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +94,14 @@ export const router = createBrowserRouter([
       {
         path: "/mycourse",
         element: <MyCourse></MyCourse>,
+      },
+      {
+        path: "/viewModule/:id",
+        element: <ViewModule></ViewModule>,
+      },
+      {
+        path: "/createModule",
+        element: <CreateModule></CreateModule>,
       },
       {
         path: "/uploadcourse",

@@ -65,10 +65,10 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative  min-h-screen flex lg:flex-row flex-col max-container bg-slate-200 py-20">
+    <section className="relative  min-h-screen flex lg:flex-row flex-col max-container  py-20">
       {alert.show && <Alert {...alert} />}
-      <div className="flex-1 min-w-[50%] flex flex-col">
-        <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug">
+      <div className="flex-1 min-w-[50%] flex flex-col bg-gradient-to-l from-slate-100 to-sky-300 p-10 rounded-lg">
+        <h1 className="sm:text-5xl text-3xl font-semibold sm:leading-snug ">
           Get in Touch
         </h1>
         <form
@@ -124,26 +124,44 @@ const Contact = () => {
           </button>
         </form>
       </div>
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
-        <Canvas
-          camera={{
-            position: [0, 0, 5],
-            fov: 75,
-            near: 0.1,
-            far: 1000,
-          }}
-        >
-          <directionalLight intensity={2.5} position={[0, 0, 1]} />
-          <ambientLight intensity={0.5} />
-          <Suspense fallback={<Loader />}>
-            <Model
-              currentAnimation={currentAnimation}
-              position={[0.5, 0.35, 0]}
-              rotation={[12.6, -0.6, 0]}
-              scale={[0.5, 0.5, 0.5]}
-            />
-          </Suspense>
-        </Canvas>
+      <div className=" w-full  mx-auto  md:ml-20 ml-1 mt-10 md:mt-5">
+        <div className=" mx-10  flex flex-col justify-center">
+          <div>
+            <h1 className="text-3xl font-semibold  mb-10">
+              Join our newsletter
+            </h1>
+            <div className="flex justify-center bg-base-100 shadow-xl">
+              <p className="text-sm font-medium text-black">
+                {" "}
+                Virtual Tutor" website, you want to craft a message that clearly
+                communicates the benefits of subscribing, such as receiving
+                updates about new courses, special offers, educational tips, and
+                more. Here's a suggested write-up for your newsletter section:{" "}
+              </p>
+            </div>
+            <div className="flex flex-col mt-20">
+              <div>
+                <h4 className="text-xl font-semibold">Adrees:</h4>
+                <p className="text-sm font-medium">
+                  House-12,
+                  <br /> Road-16,
+                  <br /> Nikunjja-02 khilkhet.
+                  <br /> Dhaka ,Bangladesh
+                </p>
+              </div>
+              <div className="mt-20">
+                <h4 className="text-xl font-semibold">
+                  Alternatively contact us as:
+                </h4>
+                <p className="text-sm font-medium">
+                  <span>virtualtutor@gmail.com</span>
+                  <p>24/7 support: 09696974873</p>
+                </p>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
