@@ -30,7 +30,7 @@ const MyCourse = () => {
     };
     fetchData();
   }, []);
-  console.log("course resoponse ", course);
+  // console.log("course resoponse ", course);
   return (
     <div className="bg-gradient-to-tr from-indigo-600 to-sky-400 py-20 min-h-screen">
       <div className="max-w-7xl mx-auto my-10">
@@ -40,18 +40,17 @@ const MyCourse = () => {
         <div className="bg-gray-200 rounded-lg p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  ">
           {course &&
             course.map((item) => (
-              // <CourseCard
-              //   key={item?.id}
-              //   Type={item?.type}
-              //   image={item?.image}
-              //   title={item?.title}
-              // ></CourseCard>
               <div
                 key={item?.id}
-                className="card bg-base-100 image-full w-96 shadow-xl mt-10"
+                className="card bg-base-100 image-full w-96  h-64 shadow-xl mt-10"
               >
                 <figure>
-                  <img src={`${baseUrl}/files/image/${item?.image}`} alt="" />
+                  <img
+                    className="  object-contain"
+                    style={{ objectFit: "cover" }}
+                    src={`${baseUrl}/files/image/${item?.image}`}
+                    alt=""
+                  />
                 </figure>
                 <div className="card-body">
                   <h2 className="card-title">{item?.Type}</h2>

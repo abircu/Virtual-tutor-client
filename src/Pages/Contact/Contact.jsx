@@ -130,7 +130,7 @@ const Contact = () => {
             <h1 className="text-3xl font-semibold  mb-10">
               Join our newsletter
             </h1>
-            <div className="flex justify-center bg-base-100 shadow-xl">
+            <div className="flex justify-center ">
               <p className="text-sm font-medium text-black">
                 {" "}
                 Virtual Tutor" website, you want to craft a message that clearly

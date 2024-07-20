@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
 import AuthContext from "../../Context/AuthProvider";
-import axios from "axios";
-import { baseUrl } from "../../config/config";
 
 const Navbar = () => {
   const { auth, signOut } = useContext(AuthContext);
@@ -161,22 +159,40 @@ const Navbar = () => {
                   <Link to="/student-profile">Student Profile</Link>
                 </li>
               )}
-              <li>
-                <button onClick={handleLogOut} className="text-xl font-bold">
-                  Log Out
-                </button>
-              </li>
+              {user && user.role === "ADMIN" && (
+                <li>
+                  <Link to="/deshboard">ADMIN</Link>
+                </li>
+              )}
             </>
           )}
-          {!isAuthenticated && (
+          {/* {!isAuthenticated && (
             <li>
               <Link to="/login">Login</Link>
             </li>
-          )}
+          )} */}
         </ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
+      <div className="navbar-end pr-10">
+        {isAuthenticated && (
+          <li style={{ listStyle: "none" }}>
+            <button
+              onClick={handleLogOut}
+              className="text-xl font-bold btn btn-outline text-white"
+            >
+              Log Out
+            </button>
+          </li>
+        )}
+        {!isAuthenticated && (
+          <li style={{ listStyle: "none" }} className="text-xl">
+            <Link to="/login">
+              <button className="btn btn-outline tex-3xl font-bold text-white px-4">
+                Login
+              </button>
+            </Link>
+          </li>
+        )}
       </div>
     </div>
   );

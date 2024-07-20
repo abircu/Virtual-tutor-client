@@ -25,6 +25,10 @@ import MyCourse from "../Components/Profile/MyCourse";
 import UploadCourse from "../Components/Profile/UploadCourse";
 import ViewModule from "../Components/CourseModule/ViewModule";
 import CreateModule from "../Components/CourseModule/CreateModule";
+import Teacher from "../Pages/Deshboard/Teacher/Teacher";
+import Student from "../Pages/Deshboard/Students/Student";
+import Courses from "../Pages/Deshboard/Courses/Courses";
+import Admin from "../Pages/Deshboard/Admin/Admin";
 
 export const router = createBrowserRouter([
   {
@@ -122,8 +126,24 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: "cart",
+        path: "statistics",
         element: <Cart></Cart>,
+      },
+      {
+        path: "teacher",
+        element: <Teacher></Teacher>,
+      },
+      {
+        path: "students",
+        element: <Student></Student>,
+      },
+      {
+        path: "course",
+        element: <Courses></Courses>,
+      },
+      {
+        path: "admin",
+        element: <Admin></Admin>,
       },
     ],
   },

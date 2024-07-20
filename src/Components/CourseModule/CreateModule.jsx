@@ -40,12 +40,12 @@ const CreateModule = () => {
           },
         })
         .then((res) => {
-          console.log("create module", res.data);
+          // console.log("create module", res.data);
         });
     } catch (error) {
       console.log(error);
     }
-    console.log("dfjdkfjkd", allValue);
+    // console.log("dfjdkfjkd", allValue);
   };
 
   const submitFile = () => {
