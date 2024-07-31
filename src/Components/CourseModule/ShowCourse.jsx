@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
 
-const ShowCourse = ({ item }) => {
+const ShowCourse = ({ item, onSelectMod }) => {
   const { auth } = useContext(AuthContext);
-  const [module, setModule] = useState("");
+  const [module, setModule] = useState([]);
   const token = auth.user.jwtToken;
-  // console.log("token", token);
   const id = item?.id;
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const ShowCourse = ({ item }) => {
   console.log("course module", module);
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
-      <div className="flex justify-center items-center my-2 ">
+      <div className="flex justify-center items-center my-2 gap-6 ">
         <Link
           to={{
             pathname: "/createModule",
@@ -42,29 +41,41 @@ const ShowCourse = ({ item }) => {
           </button>
         </Link>
         <div>
-          <button className=" btn btn-success upparcase">Start Meeting</button>
+          <button className=" btn btn-success upparcase text-sm">
+            Start Meeting
+          </button>
         </div>
       </div>
-      <div className="grid grid-cols-1">
-        {/* {module.map((mod) => (
-          <div key={mod.id} className="card lg:card-side bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg"
-                alt="Album"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">New album is released!</h2>
-              <p>Click the button to listen on Spotiwhy app.</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Listen</button>
+      <div className="border-2 border-gray-400 px-2 py-3 max-w-full mx-auto">
+        <div className="py-2">
+          <p className="text-2xl font-semibold">advance java</p>
+          <p className="text-xl border-b-2 border-gray-500 pb-2">
+            abu taher sir
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-6 ">
+          {module.map((mod) => (
+            <div
+              key={mod.id}
+              onClick={() => onSelectMod(mod)}
+              className="card w-96  bg-gray-600 shadow-xl text-white"
+            >
+              {" "}
+              <div className="card-body ">
+                <div className=" leading-tight">
+                  <h2 className="card-title">Topic: {mod.name}</h2>
+                </div>
+                <div>
+                  <h1 className="text-sm font-semibold">Module: {mod.id}</h1>
+                  <h2 className="text-xs ">Topic: {mod.name}</h2>
+                </div>
               </div>
             </div>
-          </div>
-        ))} */}
+          ))}
+        </div>
       </div>
-      <div className="min-h-screen grid grid-cols-1 md:w-1/4 max-w-6xl mx-auto  "></div>
+
+      {/* <div className="min-h-screen grid grid-cols-1 md:w-1/4 max-w-6xl mx-auto  "></div> */}
     </div>
   );
 };

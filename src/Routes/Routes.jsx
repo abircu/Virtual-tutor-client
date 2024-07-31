@@ -29,6 +29,7 @@ import Teacher from "../Pages/Deshboard/Teacher/Teacher";
 import Student from "../Pages/Deshboard/Students/Student";
 import Courses from "../Pages/Deshboard/Courses/Courses";
 import Admin from "../Pages/Deshboard/Admin/Admin";
+import ViewCourse from "../Components/CourseModule/ViewCourse";
 
 export const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ export const router = createBrowserRouter([
       {
         path: "/uploadcourse",
         element: <UploadCourse></UploadCourse>,
+      },
+      {
+        path: "/viewCourse",
+        element: <ViewCourse></ViewCourse>,
       },
       {
         path: "/secret",

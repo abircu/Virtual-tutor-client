@@ -18,3 +18,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </AuthProvider>
   </React.StrictMode>
 );
+// private static final String BASE_PATH="C:/Users/user/Desktop/MyProject/virtual-tutor/target/classes/files/";

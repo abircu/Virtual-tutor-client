@@ -4,6 +4,7 @@ import { CourseContext } from "../../Context/CourseContex";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const CreateModule = () => {
   const { item } = useContext(CourseContext);
@@ -40,12 +41,21 @@ const CreateModule = () => {
           },
         })
         .then((res) => {
-          // console.log("create module", res.data);
+          Swal.fire({
+            title: "Module create successfully",
+            showClass: {
+              popup: "animate__animated animate__fadeInUp animate__faster",
+            },
+            hideClass: {
+              popup: "animate__animated animate__fadeOutDown animate__faster",
+            },
+          });
         });
     } catch (error) {
       console.log(error);
     }
-    // console.log("dfjdkfjkd", allValue);
+
+    from;
   };
 
   const submitFile = () => {

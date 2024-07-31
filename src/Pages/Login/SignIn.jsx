@@ -50,9 +50,7 @@ const SignIn = () => {
             user: user,
           });
         }
-        // if (user.role === "ADMIN") {
-        //   navigate("/dashboard");
-        // }
+
         Swal.fire({
           title: "Login successfully",
           showClass: {

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const UploadCourse = () => {
   const [data, setData] = useState([]);
@@ -51,6 +52,15 @@ const UploadCourse = () => {
         .then((res) => {
           console.log("create course", res.data);
         });
+      Swal.fire({
+        title: "Course created successfully",
+        showClass: {
+          popup: "animate__animated animate__fadeInUp animate__faster",
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutDown animate__faster",
+        },
+      });
     } catch (error) {
       console.log(error);
     }
