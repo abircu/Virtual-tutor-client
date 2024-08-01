@@ -10,7 +10,7 @@ const ViewModule = () => {
 
   const { setItem } = useContext(CourseContext);
   setItem(item);
-  const [selectedMod, setSelectedMod] = useState(null);
+  const [selectedMod, setSelectedMod] = useState("");
 
   const handleSelectMod = (mod) => {
     setSelectedMod(mod);

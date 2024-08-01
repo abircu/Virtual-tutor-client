@@ -5,10 +5,10 @@ export const CourseContext = createContext();
 export const CourseProvider = ({ children }) => {
   const [item, setItem] = useState(() => {
     const savedItem = localStorage.getItem("courseItem");
-    return savedItem ? JSON.parse(savedItem) : null;
+    return savedItem ? savedItem : null;
   });
   useEffect(() => {
-    localStorage.setItem("courseItem", JSON.stringify(item));
+    localStorage.setItem("courseItem", item);
   }, [item]);
 
   return (

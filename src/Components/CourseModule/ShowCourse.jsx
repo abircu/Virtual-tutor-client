@@ -26,7 +26,7 @@ const ShowCourse = ({ item, onSelectMod }) => {
       console.log(error);
     }
   }, []);
-  console.log("course module", module);
+  // console.log("course module", module);
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
       <div className="flex justify-center items-center my-2 gap-6 ">
@@ -58,16 +58,15 @@ const ShowCourse = ({ item, onSelectMod }) => {
             <div
               key={mod.id}
               onClick={() => onSelectMod(mod)}
-              className="card w-96  bg-gray-600 shadow-xl text-white"
+              className="card w-full  bg-gray-600 shadow-xl text-white"
             >
               {" "}
               <div className="card-body ">
                 <div className=" leading-tight">
-                  <h2 className="card-title">Topic: {mod.name}</h2>
+                  <h2 className="card-title">{mod.name}</h2>
                 </div>
                 <div>
                   <h1 className="text-sm font-semibold">Module: {mod.id}</h1>
-                  <h2 className="text-xs ">Topic: {mod.name}</h2>
                 </div>
               </div>
             </div>
