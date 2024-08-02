@@ -4,7 +4,7 @@ import { baseUrl } from "../../../config/config";
 import AuthContext from "../../../Context/AuthProvider";
 
 const Student = () => {
-  const [stuenInfo, setStudentInfo] = useState("");
+  const [stuenInfo, setStudentInfo] = useState([]);
   const { auth } = useContext(AuthContext);
   const token = auth?.user.jwtToken;
   console.log(token);
@@ -25,28 +25,27 @@ const Student = () => {
       console.log(error);
     }
   }, []);
-  console.log("studentinfo", stuenInfo);
 
   return (
     <div className="min-h-screen  bg-gray-800 text-white">
-      {stuenInfo?.map((info) => (
-        <div key={info?.id} className="overflow-x-auto p-20">
-          <table className="table">
-            <thead>
-              <tr className="text-white text-sm font-semibold ">
-                <th>
-                  <p>SN</p>
-                </th>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Language</th>
-                <th>Country</th>
-                <th>Enroll course</th>
-                <th>Active Status</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
+      <div className="overflow-x-auto p-20">
+        <table className="table">
+          <thead>
+            <tr className="text-white text-sm font-semibold ">
+              <th>
+                <p>SN</p>
+              </th>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Language</th>
+              <th>Country</th>
+              <th>Enroll course</th>
+              <th>Active Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          {stuenInfo.map((info) => (
+            <tbody key={info?.id}>
               <tr>
                 <th>
                   <label>
@@ -58,14 +57,14 @@ const Student = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
                         <img
-                          src="https://img.daisyui.com/images/profile/demo/2@94.webp"
+                          src={`${baseUrl}/files/image/${info?.photo}`}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
                     </div>
                     <div>
                       <div className="font-bold">{info?.firstName}</div>
-                      <div className="text-sm opacity-50">United States</div>
+                      <div className="text-sm opacity-50">{info.email}</div>
                     </div>
                   </div>
                 </td>
@@ -75,15 +74,22 @@ const Student = () => {
                 <td>{info?.totalEnrolledCourse}</td>
 
                 <th>
-                  <button className="btn btn-ghost btn-xs bg-blue-300">
-                    details
+                  {info?.active ? (
+                    <button className=" text-green-700">Active</button>
+                  ) : (
+                    <button className="  text-red-600">Block</button>
+                  )}
+                </th>
+                <th>
+                  <button className="btn btn-xs bg-red-500 text-white">
+                    Remove
                   </button>
                 </th>
               </tr>
             </tbody>
-          </table>
-        </div>
-      ))}
+          ))}
+        </table>
+      </div>
     </div>
   );
 };
