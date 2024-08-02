@@ -161,7 +161,7 @@ const Navbar = () => {
               )}
               {user && user.role === "ADMIN" && (
                 <li>
-                  <Link to="/deshboard">ADMIN</Link>
+                  <Link to="/deshboard/statistics">ADMIN</Link>
                 </li>
               )}
             </>
