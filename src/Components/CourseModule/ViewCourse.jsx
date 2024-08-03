@@ -14,6 +14,7 @@ const ViewCourse = ({ mod }) => {
     console.log("the mod is", mod);
   }
   const id = mod?.id;
+  console.log("id", id);
 
   const isPdf = mod.contentName && mod.contentName.endsWith(".pdf");
   const handleSubmitQuestion = (event) => {
