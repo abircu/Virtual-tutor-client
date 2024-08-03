@@ -3,9 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
+import { CourseContext } from "../../Context/CourseContex";
 
 const ShowCourse = ({ item, onSelectMod }) => {
   const { auth } = useContext(AuthContext);
+  const { setCourseModule } = useContext(CourseContext);
   const [module, setModule] = useState([]);
   const token = auth.user.jwtToken;
   const id = item?.id;
@@ -21,12 +23,13 @@ const ShowCourse = ({ item, onSelectMod }) => {
         })
         .then((res) => {
           setModule(res.data);
+          setCourseModule(res.data);
         });
     } catch (error) {
       console.log(error);
     }
   }, []);
-  // console.log("course module", module);
+  console.log("course module", module);
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
       <div className="flex justify-center items-center my-2 gap-6 ">
@@ -41,9 +44,11 @@ const ShowCourse = ({ item, onSelectMod }) => {
           </button>
         </Link>
         <div>
-          <button className=" btn btn-success upparcase text-sm">
-            Start Meeting
-          </button>
+          <Link to="/videocall">
+            <button className="btn btn-success uppercase top-0 ">
+              Start Meeting
+            </button>
+          </Link>
         </div>
       </div>
       <div className="border-2 border-gray-400 px-2 py-3 max-w-full mx-auto">

@@ -30,6 +30,7 @@ import Student from "../Pages/Deshboard/Students/Student";
 import Courses from "../Pages/Deshboard/Courses/Courses";
 import Admin from "../Pages/Deshboard/Admin/Admin";
 import ViewCourse from "../Components/CourseModule/ViewCourse";
+import VideoCall from "../Components/VideoCall/VideoCall";
 
 export const router = createBrowserRouter([
   {
@@ -115,6 +116,10 @@ export const router = createBrowserRouter([
       {
         path: "/viewCourse",
         element: <ViewCourse></ViewCourse>,
+      },
+      {
+        path: "/videocall",
+        element: <VideoCall></VideoCall>,
       },
       {
         path: "/secret",
