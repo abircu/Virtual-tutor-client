@@ -14,7 +14,6 @@ const ViewCourse = ({ mod }) => {
     console.log("the mod is", mod);
   }
   const id = mod?.id;
-  console.log("id", id);
 
   const isPdf = mod.contentName && mod.contentName.endsWith(".pdf");
   const handleSubmitQuestion = (event) => {
@@ -39,12 +38,14 @@ const ViewCourse = ({ mod }) => {
 
     fetchComments();
   }, [mod.id]);
-  console.log("comment response", comments);
 
   // Handle new comment submission
   const handleSubmit = async (payload) => {
     try {
-      const response = await axios.post(`${baseUrl}/discussion/save`, payload);
+      const response = await axios.post(
+        `${baseUrl}/discussion/save${id}`,
+        payload
+      );
       return response.data;
     } catch (error) {
       console.error("Error submitting comment or reply:", error);
