@@ -6,6 +6,7 @@ import { router } from "./Routes/Routes";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "./Context/AuthProvider";
 import { CourseProvider } from "./Context/CourseContex";
+import Comment from "./Components/CourseModule/Comment";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
