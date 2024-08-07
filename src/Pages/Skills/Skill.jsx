@@ -10,11 +10,17 @@ const Skill = () => {
   useEffect(() => {
     try {
       axios
-        .get(`${baseUrl}/course/get/SKILL`, {
-          headers: {
-            "Content-Type": "application/json",
+        .get(
+          `${baseUrl}/course/get-category`,
+          {
+            params: { category: "SKILL" },
           },
-        })
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           setSkill(res.data);
         });

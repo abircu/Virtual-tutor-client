@@ -15,7 +15,7 @@ const ViewCourse = ({ mod }) => {
   const senderId = user.id;
   const senderRole = user.role;
   const token = user.jwtToken;
-  const message = comments;
+  const message = newComment;
 
   let parentMessageId = comments.id;
   console.log("parent", parentMessageId);
@@ -27,8 +27,9 @@ const ViewCourse = ({ mod }) => {
   } else {
     console.log("the mod is", mod);
   }
-  const id = mod?.id;
 
+  const id = mod?.id;
+  const courseModuleId = id;
   const isPdf = mod.contentName && mod.contentName.endsWith(".pdf");
   const handleSubmitQuestion = (event) => {
     event.preventDefault();
@@ -60,7 +61,7 @@ const ViewCourse = ({ mod }) => {
       const response = await axios.post(
         `${baseUrl}/discussion/save`,
         {
-          courseModule: { id: id },
+          courseModuleId,
           senderId,
           senderRole,
           message,
@@ -89,6 +90,7 @@ const ViewCourse = ({ mod }) => {
         `${baseUrl}/discussion/save`,
         {
           parentMessageId,
+          courseModuleId,
           senderId,
           senderRole,
           message: replyText,
@@ -105,7 +107,10 @@ const ViewCourse = ({ mod }) => {
       setComments(
         comments.map((comment) =>
           comment.id === parentMessageId
-            ? { ...comment, replies: [...comment.replies, response.data] }
+            ? {
+                ...comment,
+                replies: [...(comment.replies || []), response.data],
+              }
             : comment
         )
       );
@@ -149,14 +154,12 @@ const ViewCourse = ({ mod }) => {
                 <div key={comment.id} className="mb-6">
                   <div className="flex items-start">
                     <img
-                      src={
-                        comment.userPhoto || "https://via.placeholder.com/50"
-                      }
+                      src={comment.senderPhoto}
                       alt="User"
                       className="w-10 h-10 rounded-full mr-4"
                     />
                     <div className="flex flex-col bg-white p-3 rounded-md shadow-sm w-full">
-                      <div className="font-bold">{comment.author}</div>
+                      <div className="font-bold">{comment.senderName}</div>
                       <p className="text-gray-700 mt-2">{comment.message}</p>
                       <div>
                         {/* Reply section */}
@@ -174,16 +177,13 @@ const ViewCourse = ({ mod }) => {
                       {comment.replies.map((reply) => (
                         <div key={reply.id} className="flex items-start mt-4">
                           <img
-                            src={
-                              reply.userPhoto ||
-                              "https://via.placeholder.com/50"
-                            }
+                            src={reply.senderPhoto}
                             alt="User"
                             className="w-8 h-8 rounded-full mr-3"
                           />
                           <div className="flex flex-col bg-gray-100 p-2 rounded-md shadow-sm w-full">
                             <div className="text-sm font-semibold">
-                              {reply.author}
+                              {reply.senderName}
                             </div>
                             <p className="text-sm text-gray-600 mt-1">
                               {reply.message}

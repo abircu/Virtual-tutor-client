@@ -10,11 +10,17 @@ const Academic = () => {
   useEffect(() => {
     try {
       axios
-        .get(`${baseUrl}/course/get/ACADEMIC`, {
-          headers: {
-            "Content-Type": "application/json",
+        .get(
+          `${baseUrl}/course/get-category`,
+          {
+            params: { category: "ACADEMIC" },
           },
-        })
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           setAcademicCourse(res.data);
         });
