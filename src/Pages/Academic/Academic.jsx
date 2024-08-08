@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Halmet from "../../Components/Halmet";
 import Covered from "../../Shared/Covered";
 import heroImg from "../../assets/home/home-hero.jpg";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
+import AuthContext from "../../Context/AuthProvider";
 
 const Academic = () => {
+  const { auth } = useContext(AuthContext);
+  const courseId = auth.user.id;
+
   const [academicCourse, setAcademicCourse] = useState([]);
   useEffect(() => {
     try {
@@ -28,8 +32,19 @@ const Academic = () => {
       console.log(error);
     }
   }, []);
-  console.log("academic resposne", academicCourse);
-  const handleEnroll = () => console.log("course enroll");
+
+  const handleEnroll = async (id) => {
+    try {
+      const response = await axios.post(`${baseUrl}/course/${courseId}/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    console.log("couserID:", id);
+  };
   return (
     <div>
       <Halmet pagename={"Academic"}></Halmet>
@@ -67,7 +82,7 @@ const Academic = () => {
                 </div>
                 <div className="card-actions justify-end">
                   <button
-                    onClick={handleEnroll}
+                    onClick={() => handleEnroll(course.id)}
                     className="btn btn-primary uppercase"
                   >
                     Enroll now
