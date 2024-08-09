@@ -8,7 +8,7 @@ import AuthContext from "../../Context/AuthProvider";
 
 const Academic = () => {
   const { auth } = useContext(AuthContext);
-  const courseId = auth.user.id;
+  const studentId = auth.user.id;
 
   const [academicCourse, setAcademicCourse] = useState([]);
   useEffect(() => {
@@ -35,11 +35,14 @@ const Academic = () => {
 
   const handleEnroll = async (id) => {
     try {
-      const response = await axios.post(`${baseUrl}/course/${courseId}/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.get(
+        `${baseUrl}/course/buy/${studentId}/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } catch (err) {
       console.log(err);
     }

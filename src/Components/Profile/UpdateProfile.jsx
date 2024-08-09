@@ -219,11 +219,14 @@ const UpdateProfile = () => {
                     <img
                       className="rounded-full"
                       width={40}
-                      height={40}
+                      height={360}
                       src={photo}
                     />
                   )}
                 </div>
+                <button className="text-sm font-bold text-sky-800">
+                  Upload
+                </button>
               </div>
               <div className="flex flex-col mb-14">
                 <label htmlFor="option" className="text-xl font-bold mb-2">
