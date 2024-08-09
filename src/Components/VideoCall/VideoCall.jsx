@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { IoMdSend } from "react-icons/io";
+import { useLocation } from "react-router-dom";
 
 const mystyle = {};
 function randomID(len) {
@@ -22,6 +23,17 @@ export function getUrlParams(url = window.location.href) {
 }
 
 const VideoCall = () => {
+  const location = useLocation();
+  const { item } = location.state || {};
+  console.log("item from video", item);
+  const [meetingLink, setMeetingLink] = useState("");
+  const [meetingTime, setMeetingTime] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Meeting Link:", meetingLink);
+    console.log("Meeting Time:", meetingTime);
+  };
   const roomID = getUrlParams().get("roomID") || randomID(5);
 
   let myMeeting = async (element) => {
@@ -107,19 +119,28 @@ const VideoCall = () => {
           <label className="text-blue-800 text-2xl font-bold" htmlFor="">
             Share link with students
           </label>
-          <div className="flex">
-            {" "}
+          <form className="flex space-x-2" onSubmit={handleSubmit}>
             <input
-              className="px-4 py-1 rounded-lg rounded-r-none"
+              className="px-4 py-1 rounded-lg"
               type="text"
-              name=""
-              id=""
               placeholder="Paste the meeting link here"
+              value={meetingLink}
+              onChange={(e) => setMeetingLink(e.target.value)}
             />
-            <button className="text-blue-600 text-4xl">
-              <IoMdSend></IoMdSend>
+            <input
+              className="px-4 py-1 rounded-lg"
+              type="text"
+              placeholder="HH:MM AM/PM"
+              value={meetingTime}
+              onChange={(e) => setMeetingTime(e.target.value)}
+              pattern="^(0?[1-9]|1[0-2]):([0-5][0-9])\s?(AM|PM)$"
+              title="Please enter a valid time in the format HH:MM AM/PM"
+              required
+            />
+            <button type="submit" className="text-blue-600 text-4xl">
+              <IoMdSend />
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

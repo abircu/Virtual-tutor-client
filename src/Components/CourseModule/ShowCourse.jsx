@@ -11,6 +11,7 @@ const ShowCourse = ({ item, onSelectMod }) => {
   const [module, setModule] = useState([]);
   const token = auth.user.jwtToken;
   const id = item?.id;
+  const isStudent = auth.user.role === "STUDENT";
 
   useEffect(() => {
     try {
@@ -33,20 +34,27 @@ const ShowCourse = ({ item, onSelectMod }) => {
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
       <div className="flex justify-center items-center my-2 gap-6 ">
-        <Link
-          to={{
-            pathname: "/createModule",
-            state: { item: item },
-          }}
-        >
-          <button className="btn btn-success uppercase top-0 ">
-            Add module
-          </button>
-        </Link>
+        {!isStudent && (
+          <Link
+            to={{
+              pathname: "/createModule",
+              state: { item: item },
+            }}
+          >
+            <button className="btn btn-success uppercase top-0">
+              Add Module
+            </button>
+          </Link>
+        )}
         <div>
-          <Link to="/videocall">
+          <Link
+            to={{
+              pathname: "/videocall",
+              state: { item: item },
+            }}
+          >
             <button className="btn btn-success uppercase top-0 ">
-              Start Meeting
+              {isStudent ? "Join Meeting" : "Start Meeting"}
             </button>
           </Link>
         </div>

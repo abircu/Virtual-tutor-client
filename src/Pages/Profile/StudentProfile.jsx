@@ -3,6 +3,7 @@ import AuthContext from "../../Context/AuthProvider";
 import avatar from "../../assets/home/review.jpg";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
+import StudentProfileCourse from "../../Components/CourseModule/StudentProfileCourse";
 
 const StudentProfile = () => {
   const [spPhoto, setSpPhoto] = useState("");
@@ -137,6 +138,9 @@ const StudentProfile = () => {
           <h1 className="text-gray-600 shadow-lg shadow-blue-50 text-3xl font-bold p-3">
             My Course
           </h1>
+        </div>
+        <div>
+          <StudentProfileCourse></StudentProfileCourse>
         </div>
       </div>
     </div>
