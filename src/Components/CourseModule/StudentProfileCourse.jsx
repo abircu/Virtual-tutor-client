@@ -33,12 +33,12 @@ const StudentProfileCourse = () => {
 
   return (
     <div className="max-w-7xl mx-auto min-h-screen">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-10 ">
         {course &&
           course.map((item) => (
             <div
               key={item?.id}
-              className="card bg-base-100 image-full w-80  h-64 shadow-xl  mt-10"
+              className="card card-compact bg-base-100 w-96 shadow-xl mt-10 mb-10"
             >
               <figure>
                 <img
@@ -53,28 +53,35 @@ const StudentProfileCourse = () => {
                   {item?.title}
                 </h2>
 
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-row gap-3">
                   <div>
-                    <p className="text-xl  text-white">
+                    <p className="text-sm  text-black">
                       category: {item.category}
                     </p>
-                    <p className="text-xl  text-white">
+                    <p className="text-sm  text-black">
                       description: {item.description}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xl  text-white">
-                      Price: {item.price} TK
+                    <p className="text-sm  text-black">
+                      Price: <span className="text-blue-700">{item.price}</span>{" "}
+                      TK
                     </p>
-                    <p className="text-xl  text-white">
-                      Offer: {item.offer} Tk
+                    <p className="text-sm  text-black">
+                      Offer: <span className="text-blue-700">{item.offer}</span>{" "}
+                      Tk
                     </p>
                   </div>
                 </div>
                 <div className="card-actions justify-end ">
-                  <Link to={`/viewModule/:${item?.id}`} state={{ item: item }}>
-                    <button className="btn btn-primary">View Course</button>
-                  </Link>
+                  {item && (
+                    <Link
+                      to={`/viewModule/:${item?.id}`}
+                      state={{ item: item }}
+                    >
+                      <button className="btn btn-primary">View module</button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

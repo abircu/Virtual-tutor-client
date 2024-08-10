@@ -18,7 +18,7 @@ const Home = ({ contetId }) => {
       <Halmet pagename={"Home"}></Halmet>
       <Bannner contetId={"smoth"}></Bannner>
       <Hero_top id="smoth"></Hero_top>
-      <PopularCard></PopularCard>
+      {/* <PopularCard></PopularCard> */}
       <AboutUs></AboutUs>
       <VartualTutorInfo></VartualTutorInfo>
       <Faq></Faq>

@@ -1,11 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { baseUrl } from "../../config/config";
 import Halmet from "../../Components/Halmet";
 import Covered from "../../Shared/Covered";
 import heroImg from "../../assets/home/home-hero.jpg";
+import AuthContext from "../../Context/AuthProvider";
 
 const Skill = () => {
+  const { auth } = useContext(AuthContext);
+  const studentId = auth.user.id;
   const [skill, setSkill] = useState([]);
   useEffect(() => {
     try {
@@ -29,8 +32,21 @@ const Skill = () => {
     }
   }, []);
   console.log("Skill resposne", skill);
-  const handleEnrollSkill = () => {
-    console.log("skill course");
+
+  const handleEnroll = async (id) => {
+    try {
+      const response = await axios.get(
+        `${baseUrl}/course/buy/${studentId}/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+    console.log("couserID:", id);
   };
   return (
     <div className="py-20 min-h-screen">
@@ -69,7 +85,7 @@ const Skill = () => {
                 </div>
                 <div className="card-actions justify-end">
                   <button
-                    onClick={handleEnrollSkill}
+                    onClick={() => handleEnroll(singleSkill.id)}
                     className="btn btn-primary uppercase"
                   >
                     Enroll now

@@ -26,7 +26,7 @@ const Hero_top = ({ sectionID }) => {
             data-aos-duration="2000"
             className=" flex gap-3  items-center justify-center text-center bg-purple-400 text-2xl p-3 py-6 rounded-lg text-white font-bold"
           >
-            <p>Documentation</p>
+            <p>On Goinging Course</p>
             <FaArrowRight className="hover:text-purple-800"></FaArrowRight>
           </div>
           <div
@@ -54,7 +54,7 @@ const Hero_top = ({ sectionID }) => {
             data-aos-duration="2000"
             className="flex gap-3  items-center justify-center text-center bg-sky-400 text-2xl p-3 py-6 rounded-lg text-white font-bold"
           >
-            <p>Blog platform</p>
+            <p>Discussion</p>
             <FaArrowRight className="hover:text-purple-800"></FaArrowRight>
           </div>
           <div
@@ -63,7 +63,7 @@ const Hero_top = ({ sectionID }) => {
             data-aos-duration="2000"
             className="flex gap-3  items-center justify-center text-center bg-blue-400 text-2xl p-3  py-6 rounded-lg text-white font-bold"
           >
-            <p>Lorem, ipsum dolor.</p>
+            <p>Academic Course</p>
             <FaArrowRight className="hover:text-purple-800"></FaArrowRight>
           </div>
           <div
@@ -72,7 +72,7 @@ const Hero_top = ({ sectionID }) => {
             data-aos-duration="2000"
             className="flex gap-3  items-center justify-center text-center bg-green-400 text-2xl p-3 py-6 rounded-lg text-white font-bold"
           >
-            <p>Lorem, ipsum dolor.</p>
+            <p>Skill Development Course</p>
             <FaArrowRight className="hover:text-purple-800"></FaArrowRight>
           </div>
         </div>

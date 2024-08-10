@@ -18,7 +18,7 @@ const ViewModule = () => {
       Array.isArray(item.courseModules) &&
       item.courseModules.length > 0
     ) {
-      const defaultModuleId = item.courseModules[0]; // default to first module ID
+      const defaultModuleId = item.courseModules[0];
       setSelectedMod(defaultModuleId);
     }
   }, [item]);

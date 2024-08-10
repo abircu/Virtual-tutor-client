@@ -145,13 +145,13 @@ const UploadCourse = () => {
                     htmlFor=""
                     className="text-indigo-600 font-bold text-xl uppercase"
                   >
-                    Course Type
+                    Course Category
                   </label>
                   <select
                     name="option"
                     id="option"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
                     className=" w-full  text-xl font-semibold px-3 rounded-lg py-1 "
                   >
                     <option className="text-xl text-gray-400" disabled value="">
@@ -166,16 +166,22 @@ const UploadCourse = () => {
                     htmlFor=""
                     className="text-indigo-600 font-bold text-xl uppercase"
                   >
-                    Course Cetegory
+                    Course Type
                   </label>
-                  <input
-                    type="text"
-                    name="category"
-                    placeholder="Course category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    className="bg-white text-gray-400 px-2 py-1 font-semibold rounded-lg"
-                  />
+                  <select
+                    name="option"
+                    id="option"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                    className=" w-full  text-xl font-semibold px-3 rounded-lg py-1 "
+                  >
+                    <option className="text-xl text-gray-400" disabled value="">
+                      Select course type
+                    </option>
+                    <option>Basic </option>
+                    <option>Intermediate</option>
+                    <option>Advance</option>
+                  </select>
                 </div>
               </div>
               <div className="flex-1 flex-col">

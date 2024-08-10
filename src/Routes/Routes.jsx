@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
         element: <ViewCourse></ViewCourse>,
       },
       {
-        path: "/videocall",
+        path: "/videocall/:id",
         element: <VideoCall></VideoCall>,
       },
       {

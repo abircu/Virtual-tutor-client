@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { IoMdSend } from "react-icons/io";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+import { baseUrl } from "../../config/config";
+import AuthContext from "../../Context/AuthProvider";
 
 const mystyle = {};
 function randomID(len) {
@@ -25,14 +28,34 @@ export function getUrlParams(url = window.location.href) {
 const VideoCall = () => {
   const location = useLocation();
   const { item } = location.state || {};
-  console.log("item from video", item);
+  const course = item.id;
+  const { auth } = useContext(AuthContext);
+  const token = auth.user.jwtToken;
+
   const [meetingLink, setMeetingLink] = useState("");
   const [meetingTime, setMeetingTime] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Meeting Link:", meetingLink);
-    console.log("Meeting Time:", meetingTime);
+    const formattedMeetingTime = new Date(meetingTime).toISOString();
+    try {
+      const respone = await axios.post(
+        `${baseUrl}/meeting/create`,
+        {
+          meetingLink,
+          meetingTime: formattedMeetingTime,
+          course,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log("error", err);
+    }
   };
   const roomID = getUrlParams().get("roomID") || randomID(5);
 
@@ -129,12 +152,9 @@ const VideoCall = () => {
             />
             <input
               className="px-4 py-1 rounded-lg"
-              type="text"
-              placeholder="HH:MM AM/PM"
+              type="datetime-local"
               value={meetingTime}
               onChange={(e) => setMeetingTime(e.target.value)}
-              pattern="^(0?[1-9]|1[0-2]):([0-5][0-9])\s?(AM|PM)$"
-              title="Please enter a valid time in the format HH:MM AM/PM"
               required
             />
             <button type="submit" className="text-blue-600 text-4xl">

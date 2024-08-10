@@ -322,7 +322,7 @@ const UpdateProfile = () => {
             <textarea
               name="text"
               id="text"
-              rows={4}
+              rows={6}
               value={bio}
               onChange={(e) => setText(e.target.value)}
               className="rounded-lg px-3"
@@ -342,5 +342,3 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
-
-// private static final String BASE_PATH="C:/Users/user/Desktop/MyProject/virtual-tutor/target/classes/files/";

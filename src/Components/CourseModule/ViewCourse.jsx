@@ -5,6 +5,7 @@ import axios from "axios";
 import CommentCard from "./Comment";
 import { IoMdSend } from "react-icons/io";
 import AuthContext from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const ViewCourse = ({ mod }) => {
   // const [comment, setComment] = useState("");
@@ -39,7 +40,7 @@ const ViewCourse = ({ mod }) => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(
-          `${baseUrl}/discussion/get-all/${id}`,
+          `${baseUrl}/discussion/get-all/${courseModuleId}`,
           {
             params: { moduleId: mod.id },
           }
@@ -79,6 +80,11 @@ const ViewCourse = ({ mod }) => {
       return response.data;
     } catch (error) {
       console.error("Error submitting comment or reply:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Login failed",
+        text: "Invalid email or password. Please try again.",
+      });
     }
   };
   // function for replaying
@@ -147,9 +153,8 @@ const ViewCourse = ({ mod }) => {
           <h1 className="p-3 text-2xl font-bold">Discussion</h1>
           <div>
             <p className="text-slate-600 font-semibold  text-xl ">Add</p>
-            {/* comment and replies */}
+
             <div className="mb-10">
-              {/* Display all comments */}
               {comments.map((comment) => (
                 <div key={comment.id} className="mb-6">
                   <div className="flex items-start">

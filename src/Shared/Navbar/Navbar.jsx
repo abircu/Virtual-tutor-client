@@ -1,64 +1,19 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
 import AuthContext from "../../Context/AuthProvider";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const { auth, signOut } = useContext(AuthContext);
 
-  // const { email, jwtToken } = auth.user;
   const isAuthenticated = auth && auth.isAuthenticated;
   const user = isAuthenticated ? auth.user : null;
 
-  // if (auth && auth.user) {
-  //   const { email, jwtToken } = auth.user;
-  //   const isAuthenticated = true;
-  //   console.log("user email and token", email, jwtToken);
-  // }
-
   const handleLogOut = async () => {
     signOut();
-    // if (!user) {
-    //   console.error("User is not authenticated");
-    //   // signOut();
-    // }
-
-    // const { email, jwtToken } = user;
-
-    // if (!email || !jwtToken) {
-    //   console.error("Email or JWT token is missing");
-
-    //   // signOut();
-    // }
-
-    console.log(email);
-    console.log(user);
-
-    // try {
-    //   const response = await axios.post(
-    //     `${baseUrl}/account/logout`,
-    //     { email, token: jwtToken },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${jwtToken}`,
-    //       },
-    //     }
-    //   );
-
-    //   if (response.status === 200) {
-    //     const header1 = response.headers["header-name-1"];
-    //     const header2 = response.headers["header-name-2"];
-    //     console.log("Header 1:", header1);
-    //     console.log("Header 2:", header2);
-
-    //     signOut();
-    //   } else {
-    //     console.error("Logout failed");
-    //   }
-    // } catch (error) {
-    //   console.error("Error during logout", error);
-    // }
+    navigate("/");
   };
 
   return (
@@ -91,9 +46,7 @@ const Navbar = () => {
             <li>
               <Link to="/skill">Skills</Link>
             </li>
-            <li>
-              <Link to="/videos">Videos</Link>
-            </li>
+
             <li>
               <Link to="/contact">Contact</Link>
             </li>
@@ -141,9 +94,7 @@ const Navbar = () => {
           <li>
             <Link to="/skill">Skills</Link>
           </li>
-          <li>
-            <Link to="/videos">Videos</Link>
-          </li>
+
           <li>
             <Link to="/contact">Contact</Link>
           </li>
@@ -166,11 +117,6 @@ const Navbar = () => {
               )}
             </>
           )}
-          {/* {!isAuthenticated && (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          )} */}
         </ul>
       </div>
       <div className="navbar-end pr-10">
