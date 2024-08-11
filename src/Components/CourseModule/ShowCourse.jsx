@@ -10,6 +10,7 @@ const ShowCourse = ({ item, onSelectMod }) => {
   const { setCourseModule } = useContext(CourseContext);
   const [module, setModule] = useState([]);
   const [meetingData, setMeetingData] = useState({});
+  // import { IoMdSend } from "react-icons/io";
   const token = auth.user.jwtToken;
   const id = item?.id;
   console.log("course id", id);
@@ -59,13 +60,13 @@ const ShowCourse = ({ item, onSelectMod }) => {
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
       <div>
-        <p className="text-sm font-bold">{meetingData.meetingTime}</p>
+        {/* <p className="text-sm font-bold">{meetingData.meetingTime}</p>
         <p>
           meeting Link:{" "}
           <span className="text-xs text-blue-700">
             {meetingData.meetingLink}
           </span>
-        </p>
+        </p> */}
       </div>
       <div className="flex justify-center items-center my-2 gap-6 ">
         {!isStudent && (
@@ -83,12 +84,21 @@ const ShowCourse = ({ item, onSelectMod }) => {
         <div>
           <Link to={`/videocall/:${item?.id}`} state={{ item: item }}>
             <button className="btn btn-success uppercase top-0 ">
-              {isStudent ? "Join Meeting" : "Start Meeting"}
+              Create Meeting
             </button>
           </Link>
         </div>
+        <div>
+          {meetingData.meetingLink && (
+            <a href={meetingData.meetingLink} target="_blank">
+              <button className="btn btn-success uppercase top-0 ">
+                {isStudent ? "Join Meeting" : "Start Meeting"}
+              </button>
+            </a>
+          )}
+        </div>
       </div>
-      <div className="border-2 border-gray-400 px-2 py-3 max-w-full mx-auto px-10">
+      <div className="border-2 border-gray-400  py-3 max-w-full mx-auto px-10">
         <div className="py-2"></div>
         <div className="grid grid-cols-1 gap-6 ">
           {module.map((mod) => (
@@ -110,8 +120,6 @@ const ShowCourse = ({ item, onSelectMod }) => {
           ))}
         </div>
       </div>
-
-      {/* <div className="min-h-screen grid grid-cols-1 md:w-1/4 max-w-6xl mx-auto  "></div> */}
     </div>
   );
 };

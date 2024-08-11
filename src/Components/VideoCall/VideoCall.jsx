@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { IoMdSend } from "react-icons/io";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
@@ -26,11 +26,18 @@ export function getUrlParams(url = window.location.href) {
 }
 
 const VideoCall = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { item } = location.state || {};
-  const course = item.id;
+  const course = item?.id;
+  console.log("itemsssss", item);
   const { auth } = useContext(AuthContext);
-  const token = auth.user.jwtToken;
+  const token = auth?.user?.jwtToken;
+  const Role = auth?.user?.role;
+
+  if (Role !== "TEACHER" && Role !== "STUDENT") {
+    navigate("/");
+  }
 
   const [meetingLink, setMeetingLink] = useState("");
   const [meetingTime, setMeetingTime] = useState("");
@@ -134,35 +141,37 @@ const VideoCall = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <div
-        className=" flex-1 mx-auto pt-80 min-h-screen max-w-6xl items-center justify-center "
+        className=" flex-1 mx-auto pt-80 min-h-screen max-w-6xl items-center justify-center mb-10 "
         ref={myMeeting}
       ></div>
-      <div className="flex justify-center items-start flex-1 pb-20">
-        <div className=" bg-slate-400 rounded-lg p-10 flex flex-col">
-          <label className="text-blue-800 text-2xl font-bold" htmlFor="">
-            Share link with students
-          </label>
-          <form className="flex space-x-2" onSubmit={handleSubmit}>
-            <input
-              className="px-4 py-1 rounded-lg"
-              type="text"
-              placeholder="Paste the meeting link here"
-              value={meetingLink}
-              onChange={(e) => setMeetingLink(e.target.value)}
-            />
-            <input
-              className="px-4 py-1 rounded-lg"
-              type="datetime-local"
-              value={meetingTime}
-              onChange={(e) => setMeetingTime(e.target.value)}
-              required
-            />
-            <button type="submit" className="text-blue-600 text-4xl">
-              <IoMdSend />
-            </button>
-          </form>
+      {Role && Role === "TEACHER" && (
+        <div className="flex justify-center items-start flex-1 pb-20">
+          <div className=" bg-slate-400 rounded-lg p-10 flex flex-col">
+            <label className="text-blue-800 text-2xl font-bold" htmlFor="">
+              Share link with students
+            </label>
+            <form className="flex space-x-2" onSubmit={handleSubmit}>
+              <input
+                className="px-4 py-1 rounded-lg"
+                type="text"
+                placeholder="Paste the meeting link here"
+                value={meetingLink}
+                onChange={(e) => setMeetingLink(e.target.value)}
+              />
+              <input
+                className="px-4 py-1 rounded-lg"
+                type="datetime-local"
+                value={meetingTime}
+                onChange={(e) => setMeetingTime(e.target.value)}
+                required
+              />
+              <button type="submit" className="text-blue-600 text-4xl">
+                <IoMdSend />
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

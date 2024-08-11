@@ -28,18 +28,18 @@ const ViewModule = () => {
   };
   console.log("select", selectedMod);
   return (
-    <div>
+    <div className="pt-20">
       <div className="pt-20">
-        <marquee
+        {/* <marquee
           className="text-4xl font-bold py-10 text-gray-800"
           behavior="croll"
           direction="left"
         >
           {" "}
-          Virtual tutor platforms are online-based learning platforms that
+          Virtual tutor platforms is online-based learning platforms that
           provide students with access to educational resources and courses over
           the internet.
-        </marquee>
+        </marquee> */}
       </div>
       <div className=" min-h-screen flex flex-col md:flex-row ">
         <ViewCourse mod={selectedMod}></ViewCourse>
