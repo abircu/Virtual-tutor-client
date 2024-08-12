@@ -20,7 +20,7 @@ const UploadCourse = () => {
   const jwtToken = auth.user.jwtToken;
   const id = auth.user.id;
   const date = new Date();
-  // console.log("jwt", courseTeacher);
+  console.log("teacher", id);
   if (publishingDateTime == "") {
     setPublishDateAndTime(date);
   }

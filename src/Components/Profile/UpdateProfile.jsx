@@ -4,6 +4,7 @@ import Select from "react-select";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import { render } from "react-dom";
+import Swal from "sweetalert2";
 
 const UpdateProfile = () => {
   const { auth, loading } = useContext(AuthContext);
@@ -83,8 +84,6 @@ const UpdateProfile = () => {
         }
       );
 
-      console.log("Update API response:", response.data);
-
       // Reset state values after successful submission
       setFistName("");
       setRole("");
@@ -98,7 +97,7 @@ const UpdateProfile = () => {
       setGender("");
       setCountry("");
       setCity("");
-
+      Swal.fire("profile update succesfully");
       // Optionally, perform additional actions upon successful update
     } catch (error) {
       console.error("Update API error:", error);
@@ -224,9 +223,9 @@ const UpdateProfile = () => {
                     />
                   )}
                 </div>
-                <button className="text-sm font-bold text-sky-800">
+                {/* <button className="text-sm font-bold text-sky-800">
                   Upload
-                </button>
+                </button> */}
               </div>
               <div className="flex flex-col mb-14">
                 <label htmlFor="option" className="text-xl font-bold mb-2">

@@ -3,10 +3,12 @@ import AuthContext from "../../../Context/AuthProvider";
 import axios from "axios";
 import { baseUrl } from "../../../config/config";
 
-const Teacher = () => {
+const Teacher = ({ initialTeacherInfo }) => {
   const { auth } = useContext(AuthContext);
-  const [teacherInfo, setTeacherInfo] = useState([]);
+  const [teacherInfo, setTeacherInfo] = useState(initialTeacherInfo || []);
   const token = auth?.user.jwtToken;
+  const id = teacherInfo?.id;
+  const active = teacherInfo?.active;
 
   useEffect(() => {
     try {
@@ -24,7 +26,37 @@ const Teacher = () => {
       console.log(error);
     }
   }, []);
-  console.log("teacher info", teacherInfo);
+  console.log(" techer ingotrdjfkldf", teacherInfo);
+
+  const handleActiveStatus = async (id, currentStatus) => {
+    try {
+      console.log("teeeee", id);
+      console.log("staaaa", currentStatus);
+      const response = await axios.patch(
+        `${baseUrl}/teacher/set-status`,
+        null,
+        {
+          params: { teacherId: id, status: !currentStatus },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setTeacherInfo((prevTeacherInfo) =>
+        prevTeacherInfo.map((teacher) =>
+          teacher.id === id ? { ...teacher, active: !currentStatus } : teacher
+        )
+      );
+
+      console.log("Response data:", response.data);
+    } catch (err) {
+      console.error("Error updating status:", err);
+    }
+
+    console.log("btn click");
+  };
+
   return (
     <div className="min-h-screen bg-gray-800 text-white">
       <div className="overflow-x-auto p-20">
@@ -41,7 +73,6 @@ const Teacher = () => {
               <th>Total Course</th>
               <th>Total Sell</th>
               <th>Active Status</th>
-              <th>Action</th>
             </tr>
           </thead>
           {teacherInfo.map((info) => (
@@ -74,16 +105,17 @@ const Teacher = () => {
                 <td>{info?.totalCourse}</td>
                 <td>{info?.totalSell}</td>
                 <th>
-                  {info?.active ? (
-                    <button className=" text-green-700">Active</button>
-                  ) : (
-                    <button className="  text-red-600">Block</button>
-                  )}
-                </th>
-                <th>
-                  <button className="btn btn-xs bg-red-500 text-white">
-                    Remove
-                  </button>
+                  {
+                    <button
+                      onClick={() => handleActiveStatus(info.id, info.active)}
+                      key={info.id}
+                      className={`btn btn-sm btn-ghost ${
+                        info?.active ? " text-green-700" : "text-red-500"
+                      }`}
+                    >
+                      {info?.active ? "Active" : "block"}
+                    </button>
+                  }
                 </th>
               </tr>
             </tbody>

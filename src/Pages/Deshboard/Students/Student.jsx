@@ -3,11 +3,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { baseUrl } from "../../../config/config";
 import AuthContext from "../../../Context/AuthProvider";
 
-const Student = () => {
-  const [stuenInfo, setStudentInfo] = useState([]);
+const Student = ({ initialStudentInfo }) => {
+  const [stuenInfo, setStudentInfo] = useState(initialStudentInfo || []);
   const { auth } = useContext(AuthContext);
   const token = auth?.user.jwtToken;
-  console.log(token);
+  // console.log(token);
 
   useEffect(() => {
     try {
@@ -26,6 +26,35 @@ const Student = () => {
     }
   }, []);
 
+  const handleStudentStatus = async (id, currentStatus) => {
+    try {
+      console.log("teeeee", id);
+      console.log("staaaa", currentStatus);
+      const response = await axios.patch(
+        `${baseUrl}/student/set-status`,
+        null,
+        {
+          params: { studentId: id, status: !currentStatus },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setStudentInfo((prevStudentInfo) =>
+        prevStudentInfo.map((student) =>
+          student.id === id ? { ...student, active: !currentStatus } : student
+        )
+      );
+
+      console.log("Response data:", response.data);
+    } catch (err) {
+      console.error("Error updating status:", err);
+    }
+
+    console.log("btn click");
+  };
+
   return (
     <div className="min-h-screen  bg-gray-800 text-white">
       <div className="overflow-x-auto p-20">
@@ -41,7 +70,6 @@ const Student = () => {
               <th>Country</th>
               <th>Enroll course</th>
               <th>Active Status</th>
-              <th>Action</th>
             </tr>
           </thead>
           {stuenInfo.map((info) => (
@@ -57,7 +85,7 @@ const Student = () => {
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
                         <img
-                          src={`${baseUrl}/files/image/${info?.photo}`}
+                          src={info?.photo}
                           alt="Avatar Tailwind CSS Component"
                         />
                       </div>
@@ -74,16 +102,17 @@ const Student = () => {
                 <td>{info?.totalEnrolledCourse}</td>
 
                 <th>
-                  {info?.active ? (
-                    <button className=" text-green-700">Active</button>
-                  ) : (
-                    <button className="  text-red-600">Block</button>
-                  )}
-                </th>
-                <th>
-                  <button className="btn btn-xs bg-red-500 text-white">
-                    Remove
-                  </button>
+                  {
+                    <button
+                      onClick={() => handleStudentStatus(info.id, info.active)}
+                      key={info.id}
+                      className={`btn btn-sm btn-ghost ${
+                        info?.active ? " text-green-700" : "text-red-500"
+                      }`}
+                    >
+                      {info?.active ? "Active" : "block"}
+                    </button>
+                  }
                 </th>
               </tr>
             </tbody>

@@ -39,7 +39,11 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
-      if (response && response.data) {
+      if (
+        response &&
+        response.data &&
+        response.data.message === "User Login Successfully"
+      ) {
         console.log("Login response:", response.data);
 
         const { ...user } = response.data;
@@ -60,9 +64,30 @@ const SignIn = () => {
             popup: "animate__animated animate__fadeOutDown animate__faster",
           },
         });
-        // console.log("login user", user);
 
         navigate(from, { replace: true });
+      } else if (
+        response &&
+        response.data &&
+        response.data.message === "Block User"
+      ) {
+        console.log("first", response.data.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User is Blocked",
+        });
+      } else if (
+        response &&
+        response.data &&
+        response.data.message === "Already login with a Devicer"
+      ) {
+        console.log("first", response.data.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Already login with a Device",
+        });
       } else {
         throw new Error("Invalid resopose recive from server");
       }

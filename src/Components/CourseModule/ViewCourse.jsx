@@ -6,6 +6,7 @@ import CommentCard from "./Comment";
 import { IoMdSend } from "react-icons/io";
 import AuthContext from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ViewCourse = ({ mod }) => {
   // const [comment, setComment] = useState("");
@@ -109,7 +110,6 @@ const ViewCourse = ({ mod }) => {
         }
       );
 
-      // Update the comments state with the new reply
       setComments(
         comments.map((comment) =>
           comment.id === parentMessageId
@@ -150,6 +150,11 @@ const ViewCourse = ({ mod }) => {
         )}
 
         <div className=" flex-1 flex flex-col justify-between border-l-2 border-sky-700 pl-2 md:pl-4">
+          <Link to="/assignment" state={{ mod }}>
+            <div className="w-full bg-green-800 rounded-lg flex justify-center items-center text-center">
+              <button className=" py-4 text-white">Assignment</button>
+            </div>
+          </Link>
           <h1 className="p-3 text-2xl font-bold">Discussion</h1>
           <div>
             <p className="text-slate-600 font-semibold  text-xl ">Add</p>

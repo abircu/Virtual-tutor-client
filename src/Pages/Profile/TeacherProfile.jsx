@@ -86,7 +86,7 @@ const TeacherProfile = () => {
             </Link>
             <Link to="/uploadcourse">
               <button className=" px-6 py-3 text-white text-xl font-semibold bg-black rounded-bl-full rounded-tr-full hover:bg-slate-200 hover:text-indigo-800 ">
-                Course Upload
+                Course Create
               </button>
             </Link>
           </div>

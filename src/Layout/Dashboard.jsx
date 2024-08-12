@@ -18,12 +18,12 @@ const Dashboard = () => {
           <li className="py-3 border-b-2 border-white">
             <NavLink to="/deshboard/students">Students</NavLink>
           </li>
-          <li className="py-3 border-b-2 border-white">
+          <li className="py-3 ">
             <NavLink to="/deshboard/course">Courses</NavLink>
           </li>
-          <li className="py-3 border-b-2 border-white">
+          {/* <li className="py-3 border-b-2 border-white">
             <NavLink to="/deshboard/admin">Admin</NavLink>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div className="flex-1 min-h-screen">

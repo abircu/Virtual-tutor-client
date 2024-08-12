@@ -28,9 +28,10 @@ import CreateModule from "../Components/CourseModule/CreateModule";
 import Teacher from "../Pages/Deshboard/Teacher/Teacher";
 import Student from "../Pages/Deshboard/Students/Student";
 import Courses from "../Pages/Deshboard/Courses/Courses";
-import Admin from "../Pages/Deshboard/Admin/Admin";
+
 import ViewCourse from "../Components/CourseModule/ViewCourse";
 import VideoCall from "../Components/VideoCall/VideoCall";
+import Assignment from "../Components/Assignment/Assignment";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ export const router = createBrowserRouter([
         element: <VideoCall></VideoCall>,
       },
       {
+        path: "/assignment",
+        element: <Assignment></Assignment>,
+      },
+      {
         path: "/secret",
         element: (
           <PrivetRoutes>
@@ -150,10 +155,6 @@ export const router = createBrowserRouter([
       {
         path: "course",
         element: <Courses></Courses>,
-      },
-      {
-        path: "admin",
-        element: <Admin></Admin>,
       },
     ],
   },

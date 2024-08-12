@@ -4,7 +4,7 @@ import avatar from "../../assets/home/review.jpg";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import StudentProfileCourse from "../../Components/CourseModule/StudentProfileCourse";
-
+import Swal from "sweetalert2";
 const StudentProfile = () => {
   const [spPhoto, setSpPhoto] = useState("");
   const { auth, setAuth } = useContext(AuthContext);
@@ -41,7 +41,7 @@ const StudentProfile = () => {
           photo: response.data.photo,
         },
       }));
-      console.log("student profile update", response.data.photo);
+      Swal.fire("profile update succesfully");
     } catch (error) {
       console.error("Update API error:", error);
     }

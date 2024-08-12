@@ -92,6 +92,7 @@ const SignUp = () => {
                 <option selected>Choise your option</option>
                 <option value="STUDENT">Student</option>
                 <option value="TEACHER">Teacher</option>
+                {/* <option value="ADMIN">ADMIN</option> */}
               </select>
             </div>
             <div className="flex flex-col">

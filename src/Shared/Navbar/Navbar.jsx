@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/home/logo02.png";
 import AuthContext from "../../Context/AuthProvider";
-
+import axios from "axios";
+import { baseUrl } from "../../config/config";
+import Swal from "sweetalert2";
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -10,10 +12,22 @@ const Navbar = () => {
 
   const isAuthenticated = auth && auth.isAuthenticated;
   const user = isAuthenticated ? auth.user : null;
+  const token = auth?.user?.jwtToken;
+  // console.log("jwt token ", token);
 
   const handleLogOut = async () => {
-    signOut();
-    navigate("/");
+    try {
+      axios
+        .post(`${baseUrl}/account/logout`, {
+          token,
+        })
+        .then((res) => res.data);
+      signOut();
+      Swal.fire("logout succes ");
+      navigate("/");
+    } catch (err) {
+      console.log("catch vale", err);
+    }
   };
 
   return (
@@ -62,6 +76,12 @@ const Navbar = () => {
                     <Link to="/student-profile">Student Profile</Link>
                   </li>
                 )}
+                {user && user.role === "ADMIN" && (
+                  <li>
+                    <Link to="/deshboard/statistics">ADMIN</Link>
+                  </li>
+                )}
+
                 <li>
                   <button
                     onClick={handleLogOut}

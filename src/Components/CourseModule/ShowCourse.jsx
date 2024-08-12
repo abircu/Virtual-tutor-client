@@ -10,7 +10,7 @@ const ShowCourse = ({ item, onSelectMod }) => {
   const { setCourseModule } = useContext(CourseContext);
   const [module, setModule] = useState([]);
   const [meetingData, setMeetingData] = useState({});
-  // import { IoMdSend } from "react-icons/io";
+  console.log("module", module);
   const token = auth.user.jwtToken;
   const id = item?.id;
   console.log("course id", id);
@@ -59,15 +59,6 @@ const ShowCourse = ({ item, onSelectMod }) => {
 
   return (
     <div className="pt-0 md:ml-10 m-2 p-2">
-      <div>
-        {/* <p className="text-sm font-bold">{meetingData.meetingTime}</p>
-        <p>
-          meeting Link:{" "}
-          <span className="text-xs text-blue-700">
-            {meetingData.meetingLink}
-          </span>
-        </p> */}
-      </div>
       <div className="flex justify-center items-center my-2 gap-6 ">
         {!isStudent && (
           <Link
@@ -82,11 +73,15 @@ const ShowCourse = ({ item, onSelectMod }) => {
           </Link>
         )}
         <div>
-          <Link to={`/videocall/:${item?.id}`} state={{ item: item }}>
-            <button className="btn btn-success uppercase top-0 ">
-              Create Meeting
-            </button>
-          </Link>
+          {auth?.user?.role &&
+            auth?.user?.role === "TEACHER" &&
+            !meetingData.meetingLink && (
+              <Link to={`/videocall/:${item?.id}`} state={{ item: item }}>
+                <button className="btn btn-success uppercase top-0 ">
+                  Create Meeting
+                </button>
+              </Link>
+            )}
         </div>
         <div>
           {meetingData.meetingLink && (
@@ -113,7 +108,7 @@ const ShowCourse = ({ item, onSelectMod }) => {
                   <h2 className="card-title">{mod.name}</h2>
                 </div>
                 <div>
-                  <h1 className="text-sm font-semibold">Module: {mod.id}</h1>
+                  <h1 className="text-sm font-semibold"> {mod.topics}</h1>
                 </div>
               </div>
             </div>

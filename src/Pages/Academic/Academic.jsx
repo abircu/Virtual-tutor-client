@@ -5,6 +5,7 @@ import heroImg from "../../assets/home/home-hero.jpg";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Academic = () => {
   const { auth } = useContext(AuthContext);
@@ -43,6 +44,7 @@ const Academic = () => {
           },
         }
       );
+      Swal.fire("course Enroll successfully");
     } catch (err) {
       console.log(err);
     }
@@ -58,14 +60,15 @@ const Academic = () => {
           "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."
         }
         btnText={"Explore more"}
+        btnID={"academic"}
       ></Covered>
-      <div className="min-h-screen max-w-7xl mx-auto py-10">
+      <div id="academic" className="min-h-screen max-w-7xl mx-auto py-10">
         <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3">
           {academicCourse.map((course) => (
-            <div className="card card-compact w-96 shadow-xl h-[400px] bg-gray-200 pt-4">
+            <div className="card card-compact w-96 shadow-xl h-[400px] bg-gray-200 pt-4 mt-10">
               <figure>
                 <img
-                  className="rounded-lg "
+                  className="rounded-lg w-full object-cover "
                   src={`${baseUrl}/files/image/${course?.image}`}
                   alt="Shoes"
                 />

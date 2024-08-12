@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../../config/config";
 import AuthContext from "../../Context/AuthProvider";
-
+import Swal from "sweetalert2";
 const mystyle = {};
 function randomID(len) {
   let result = "";
@@ -44,13 +44,13 @@ const VideoCall = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formattedMeetingTime = new Date(meetingTime).toISOString();
+
     try {
       const respone = await axios.post(
         `${baseUrl}/meeting/create`,
         {
           meetingLink,
-          meetingTime: formattedMeetingTime,
+
           course,
         },
         {
@@ -60,6 +60,8 @@ const VideoCall = () => {
           },
         }
       );
+      console.log("meeeeeetng", respone.data);
+      Swal.fire("Link created ");
     } catch (err) {
       console.log("error", err);
     }
@@ -158,13 +160,13 @@ const VideoCall = () => {
                 value={meetingLink}
                 onChange={(e) => setMeetingLink(e.target.value)}
               />
-              <input
+              {/* <input
                 className="px-4 py-1 rounded-lg"
                 type="datetime-local"
                 value={meetingTime}
                 onChange={(e) => setMeetingTime(e.target.value)}
                 required
-              />
+              /> */}
               <button type="submit" className="text-blue-600 text-4xl">
                 <IoMdSend />
               </button>

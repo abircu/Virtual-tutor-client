@@ -5,7 +5,7 @@ import Halmet from "../../Components/Halmet";
 import Covered from "../../Shared/Covered";
 import heroImg from "../../assets/home/home-hero.jpg";
 import AuthContext from "../../Context/AuthProvider";
-
+import Swal from "sweetalert2";
 const Skill = () => {
   const { auth } = useContext(AuthContext);
   const studentId = auth.user.id;
@@ -43,6 +43,7 @@ const Skill = () => {
           },
         }
       );
+      Swal.fire("Course enroll succesfully");
     } catch (err) {
       console.log(err);
     }
@@ -58,14 +59,15 @@ const Skill = () => {
           "Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."
         }
         btnText={"Explore more"}
+        btnID={"skill"}
       ></Covered>
-      <div className="min-h-screen max-w-7xl mx-auto py-10">
+      <div id="skill" className="min-h-screen max-w-7xl mx-auto py-10">
         <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3">
           {skill.map((singleSkill) => (
-            <div className="card card-compact w-96 shadow-xl h-[400px] bg-gray-200 pt-4">
+            <div className="card card-compact w-96 shadow-xl h-[400px] bg-gray-200 pt-4 mt-10">
               <figure>
                 <img
-                  className="rounded-lg "
+                  className="rounded-lg w-full object-cover "
                   src={`${baseUrl}/files/image/${singleSkill?.image}`}
                   alt="Shoes"
                 />
